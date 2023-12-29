@@ -1,12 +1,16 @@
 import { useState } from 'react'
-
+import Header from './Components/Header'
+import { Route, Router, Routes } from 'react-router-dom'
+import Home from './screens/Home'
 
 function App() {
 
   return (
-   <div>
-    <h3 className='font-poppins text-4xl text-Primary_Neutral'> I.M.Perfact</h3>
-    <button>i am doing new commit </button>
+   <div> 
+    <Header />
+    <Routes>
+      <Route path='/' element={<Home/>}/>
+      </Routes>
    </div>
   )
 }
