@@ -1,9 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import imageSrc from '../assets/hero.png'
 import { IoSearchSharp } from "react-icons/io5";
 import { CiLock } from "react-icons/ci";
 import Question from '../Components/Question';
+import  axios  from 'axios';
 const Home = () => {
+
+  async function getQuestions(){
+    await axios.get(`http://3.108.227.195:8001/question-list`,{}, {
+      headers: {
+        "Content-Type": "application/json",
+        // "token": token
+      }
+    })
+      .then((res) => {
+        console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
+        if (res?.data?.api_status) {
+          // setOrder_no(res?.data?.data)
+          console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
+        }
+        else {
+          // navigate(-1)
+        }
+
+      })
+      .catch((err) => { console.log("error contact us", err) })
+  }
+  useEffect(()=>{
+    getQuestions()
+  },[])
   return (
     < div className='space-y-12'
     >
