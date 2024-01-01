@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import imageSrc from '../assets/hero.png'
 import { IoSearchSharp } from "react-icons/io5";
 import { CiLock } from "react-icons/ci";
 import Question from '../Components/Question';
 import  axios  from 'axios';
 const Home = () => {
-
+  const [questions, setQuestions] = useState([])
   async function getQuestions(){
-    await axios.get(`http://3.108.227.195:8001/question-list`,{}, {
+    await axios.get(`http://3.108.227.195:8000/question-list`,{}, {
       headers: {
         "Content-Type": "application/json",
         // "token": token
@@ -15,9 +15,12 @@ const Home = () => {
     })
       .then((res) => {
         console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
+        const questionArray = res?.data 
+        setQuestions(questionArray)
         if (res?.data?.api_status) {
           // setOrder_no(res?.data?.data)
           console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
+          console.log(res?.data?.api_status,"result")
         }
         else {
           // navigate(-1)
@@ -87,10 +90,15 @@ const Home = () => {
                         Top Questions 
                       </h3>
                       <div className='w-full flex flex-col gap-3'>
-                      <Question/>
-                      <Question/>
-                      <Question/>
-                      <Question/>
+                       {questions?.map((question)=>(
+                         <Question 
+                         title={question?.title}
+                         details={question?.description }
+                         q_id={question?.Q_id}
+                         publish={question?.pub_date  }
+                         />
+                       ))}
+                     
                       </div>
                    
     </div>
