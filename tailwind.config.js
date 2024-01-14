@@ -10,6 +10,8 @@ export default {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
         raleway: ['Raleway', 'sans-serif'],
+        calligraffitti :['Calligraffitti','sans-serif']
+       
       },
       colors:{
             //Primary
