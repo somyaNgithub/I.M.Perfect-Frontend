@@ -1,0 +1,51 @@
+.ce-block__content {
+    position: relative;
+    max-width: 88% !important;
+    margin: 0 auto;
+    -webkit-transition: background-color .15s ease;
+    transition: background-color .15s ease;
+}
+.ce-header{
+    font-size: x-large;
+    font-weight: 700;
+    color: #525fe1;
+   
+}
+.ce-paragraph{
+    font-size: 20px;
+    color: black;
+    font-weight: 600;
+}
+.cdx-list__item{
+    font-weight: 500;
+    font-size: 18px;
+    color: #454545;
+}
+.ce-toolbar__content {
+    max-width: 88% !important;
+    margin: 0 auto;
+    position: relative;
+}
+
+.codex-editor__redactor {
+    padding-bottom: 20px !important;
+}
+
+.editorJs {
+    min-height: 80px;
+    max-height: 100%;
+    width: 100%;
+}
+
+/* .editorJs ul{
+   list-style: disc!important;
+}
+.editorJs ol{
+    list-style:decimal!important;
+ }
+ .editorJs li{
+    text-align: left!important;
+ } */
+/* .cdx-list{
+    padding-left: 20px!important;
+ } */

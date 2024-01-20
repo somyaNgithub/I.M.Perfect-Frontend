@@ -4,10 +4,12 @@ import axios from 'axios'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Editor } from '../Components/Editor';
+import { EditorReadOnly } from '../Components/Editor/EditorReadOnly';
 const QuestionPage = () => {
     // const {q_id} = useParams()
     const [title,setTitle] = useState(null)
-    const [detail,setDetail] = useState(null)
+    const [detail,setDetail] = useState('{"mdohit":"32"}')
     const [stage,setStage] = useState({title:false,
     detailget:false})
     const handleStage =(key)=>{
@@ -106,12 +108,15 @@ Introduce the problem and expand on what you put in the title. Minimum 20 charac
        className='border-2 border-border_Neutral px-5 py-2  rounded-xl text-base font-poppins font-medium hover:border-pink-500 focus:outline-pink-500'
        placeholder='exp . Is there any special goverment project run for special childs ?'
        />
+       <EditorReadOnly data={detail} id='read'  />
+        <Editor  data='{"mdohit":"32"}' setJSONData={setDetail} id={"editor"} />
        {detail?.length>20?
        <button 
        
        onClick={()=>handleStage("detailget")}
        className='self-start px-3 py-1 text-center font-poppins font-medium'>confirm</button>:null}
       </div>
+     
       <button
       className='px-3 py-2 bg-pink-400 rounded-lg text-lg font-poppins font-medium text-white'
       // disabled={stage?.detailget || stage?.title}

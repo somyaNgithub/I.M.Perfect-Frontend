@@ -12,6 +12,7 @@ const Header = () => {
       <Link to='/' className='text-lg font-poppins font-medium text-TextColor_Neutral' >About</Link>
       <Link to ='/'className='text-lg font-poppins font-medium text-TextColor_Neutral' >For Expert</Link>
       <Link to ='/question'className='text-lg font-poppins font-medium text-TextColor_Neutral' >question</Link>
+       <Link to ='/users'className='text-lg font-poppins font-medium text-TextColor_Neutral' >Users</Link>
             
       <div
       className='px-3 py-2 flex border-2 border-Secondary1_Neutral rounded-lg '

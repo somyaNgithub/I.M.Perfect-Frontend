@@ -9,7 +9,7 @@ import HeadingTags from '../Components/Ribbon/HeadingTags';
 const Home = () => {
   const [questions, setQuestions] = useState([])
   async function getQuestions(){
-    await axios.get(`http://3.108.227.195:8000/question-list`,{}, {
+    await axios.get(`//3.108.227.195:8000/question-list`,{}, {
       headers: {
         "Content-Type": "application/json",
         // "token": token
@@ -59,13 +59,13 @@ const Home = () => {
                       </h3>
                       <div className='w-full flex flex-col gap-5'>
                       <p
-                      className='w-full mx-5 flex  justify-center  items-center font-poppins text-center  '
+                      className='w-full mx-5 flex  justify-center  items-center font-poppins text-center font-medium text-2xl '
                       >
                         Our vision for the Imperfect Community Plan stems from a profound belief in inclusivity and the collective strength that emerges from embracing diversity. We aspire to create a haven where special children and their parents feel not just accepted, but truly valued for their unique qualities. In our Imperfect Community, we aim to foster an environment that recognizes the individuality of every child and supports their journey towards a fulfilling life.
                       </p>
                       <ul className='list-decimal font-poppins text-lg'>
-                           <li className='ml-5 font-poppins font-medium text-lg text-TextColor_Neutral'> Empowerment through Education:
-                            <ul className='list-disc ml-5 text-TextColor_T200 text-sm'>
+                           <li className='ml-5 font-poppins font-medium  text-TextColor_Neutral text-xl'> Empowerment through Education:
+                            <ul className='list-disc ml-5 text-TextColor_T200 text-base'>
                                  <li>
                                  We envision a community where educational institutions are equipped to cater to the diverse needs of special children.
                                  </li>
@@ -78,8 +78,8 @@ const Home = () => {
                             </ul>
 
                            </li>
-                           <li className='ml-5 font-poppins font-medium  text-lg'> Accessible Healthcare and Therapeutic Support:
-                            <ul className='list-disc ml-5 text-TextColor_T200 text-sm'>
+                           <li className='ml-5 font-poppins font-medium text-TextColor_Neutral text-xl'> Accessible Healthcare and Therapeutic Support:
+                            <ul className='list-disc ml-5 text-TextColor_T200 text-base'>
                                  <li>
                                  We envision a community where educational institutions are equipped to cater to the diverse needs of special children.
                                  </li>
@@ -134,7 +134,7 @@ const Home = () => {
                        <HeadingTags title={"Who We Are"}/>
                         
                       </h3>
-                      <p className='text-lg font-poppins font-medium text-center'>
+                      <p className='text-2xl font-poppins font-medium text-center'>
                       At ImperfectConnect, we are a dedicated community passionate about supporting parents of special children. We believe in the strength that comes from embracing differences and the power of shared experiences. Our platform is a safe haven where understanding thrives, resilience is celebrated, and every parent finds the support they need. Together, we navigate the unique journey of raising extraordinary children, fostering a sense of belonging and empowerment. Welcome to ImperfectConnect – where your story is at the heart of our community.
                       </p>
     </div>

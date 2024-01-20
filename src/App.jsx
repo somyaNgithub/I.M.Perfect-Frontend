@@ -6,6 +6,8 @@ import Login from './screens/Login'
 import AskQuestion from './screens/AskQuestion'
 import QuestionPage from './screens/QuestionPage'
 import axios from 'axios'
+import Users from './screens/Users'
+import { User } from './screens/User'
 function App() {
   const refreshToken = async () =>{
         if(localStorage?.getItem('Token_refresh')){
@@ -40,7 +42,8 @@ function App() {
       <Route path='/login' element={<Login/>}/>
       <Route path='/question' element={<AskQuestion/>}/>
       <Route path='/question/:q_id' element={<QuestionPage/>}/>
-       
+       <Route path ='/users' element={<Users/>}/>
+       <Route path='/user/:id' element={<User/>}/>
       </Routes>
    </div>
   )
