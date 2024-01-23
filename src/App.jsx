@@ -3,11 +3,16 @@ import Header from './Components/Header'
 import { Route, Router, Routes } from 'react-router-dom'
 import Home from './screens/Home'
 import Login from './screens/Login'
-import AskQuestion from './screens/AskQuestion'
-import QuestionPage from './screens/QuestionPage'
+import {AskQuestion} from './screens/AskQuestion'
+// import QuestionPage from './screens/QuestionPage'
+import ScrollTop from './Components/ScrollTop'
 import axios from 'axios'
 import Users from './screens/Users'
 import { User } from './screens/User'
+import { Footer } from './Components/Footer'
+import { ProfilePage } from './screens/Profile'
+import MyQuestions from './screens/Profile/MyQuestions'
+import { QuestionDetails } from './screens/QuestionDetails'
 function App() {
   const refreshToken = async () =>{
         if(localStorage?.getItem('Token_refresh')){
@@ -36,15 +41,23 @@ function App() {
   return (
    <div> 
     <Header />
+    <ScrollTop />
     <Routes>
       <Route path='/' element={<Home/>}/>
       
       <Route path='/login' element={<Login/>}/>
       <Route path='/question' element={<AskQuestion/>}/>
-      <Route path='/question/:q_id' element={<QuestionPage/>}/>
+      <Route path='/question/:id' element={<QuestionDetails/>}/>
+      
+      <Route path='/ask-question' element={<AskQuestion/>}/>
        <Route path ='/users' element={<Users/>}/>
        <Route path='/user/:id' element={<User/>}/>
+       <Route path='/profile' element={<ProfilePage/>}>
+        <Route path='edit' element={<User />}/>
+        <Route path='my-question' element={<MyQuestions/>}/>
+        </Route> 
       </Routes>
+      <Footer/>
    </div>
   )
 }

@@ -10,7 +10,7 @@ const User = () => {
     const [UserDatam , SetUserData] = useState('')
 
     useEffect(()=>{
-       axios.get(`http://3.108.227.195:8000/get_user/${id}/`)
+       axios.get(`http://3.108.227.195:8001/get_user/${id}/`)
        .then((res)=>{
         console.log(res)
         if(res?.status===200){
@@ -61,7 +61,7 @@ const User = () => {
             {/* about */}
             <div className='px-5 py-3 w-full border-2 rounded-2xl flex-col flex gap-5'>
                 {/* title */}
-                <h3 className='font-poppins text-TextColor_Neutral font-medium text-2xl'>About Me</h3>
+                <h3 className='font-poppinsnpm i @editorjs/editorjs text-TextColor_Neutral font-medium text-2xl'>About Me</h3>
                 <p className='text-TextColor_T200 font-medium w-full flex'>
                     sys System Configuration Management Administrator (ClearCase, SVN, Git), defining various merge workflows between branches.
 

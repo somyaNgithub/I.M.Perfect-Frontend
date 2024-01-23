@@ -26,11 +26,11 @@ const Users = () => {
              <h3 className='text-3xl font-calligraffitti font-medium text-TextColor_Neutral'> Users</h3>
               <div className="flex flex-wrap  justify-start gap-10 items-center w-full ">
                 {
-                    userList?.map((user)=>(
+                  userList[1] &&  userList?.map((user)=>(
                     <div key={user?.U_id} className='max-w-[325px] hover:scale-110 group hover:bg-black hover:text-white border rounded-lg shadow-md w-full px-5 py-3 flex flex-col ma'>
                         <Link to={`/user/${user?.U_id}`} className='w-full flex gap-5 items-center'>
                             <div className='w-[60px] h-[60px] rounded-lg '>
-                                <img  src={userimg} className='w-full object-fill'/>
+                                <img  src={user?.avatar??userimg} className='w-full object-fill'/>
                             </div>
                             <div className='flex  flex-col py-1 font-poppins font-medium group-hover:text-white text-TextColor_T200'>
                                 <Link className='text-2xl text-Secondary1_Neutral line-clamp-1'>{user?.fullName}</Link>

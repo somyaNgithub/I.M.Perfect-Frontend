@@ -144,7 +144,7 @@ const Home = () => {
                       </h3> 
                       <div className='flex w-full justify-end'>
                         <Link 
-                        to={'/question'}
+                        to={'/ask-question'}
                         className='border-2 border-Secondary1_Neutral ring-2 bg-Secondary1_s50 rounded-lg px-2 py-1 text-center text-lg ' >Ask a question</Link>
                       </div>
                       <div className='w-full flex flex-col justify-center items-center mx-auto gap-3'>

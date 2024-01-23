@@ -2,7 +2,12 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { IoEye, IoEyeOff } from 'react-icons/io5'
 // import { data } from 'autoprefixer'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
+  const navigate  = useNavigate()
   const [email,setEmail] =useState(null)
   const [password,setPassword] = useState(null)
   const [passwordIsVisual,setPasswordIsVisual] = useState(false)
@@ -31,13 +36,46 @@ const Login = () => {
         localStorage?.setItem("user",JSON?.stringify(res?.data?.user))
         console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
         console.log(res?.data?.api_status,"result")
+          toast.success('Login successfully', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+            setTimeout(()=>{navigate(-1)},5000)
+            
       }
       else {
         // navigate(-1)
+         toast.error('Username or password did not Match', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
       }
 
     })
-    .catch((err) => { console.log("error contact us", err) })
+    .catch((err) => { console.log("error contact us", err)
+     toast.error('Something went wrong try again later', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            }); 
+  })
   }
   return (
     <div className='w-full justify-center items-center flex h-[70vh]  bg-pink-100'>
@@ -81,6 +119,18 @@ const Login = () => {
 
                    </div>
         </div>
+          <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
     </div>
   )
 }
