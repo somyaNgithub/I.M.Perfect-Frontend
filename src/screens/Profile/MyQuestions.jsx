@@ -35,6 +35,7 @@ const MyQuestions = () => {
   return (
     <div className='w-full flex flex-col p-5 gap-10'>
         <h3 className='font-poppins font-medium text-2xl'> My Questions </h3>
+    <Link to={'/ask-question'} className='border-2 border-Secondary1_Neutral ring-2 bg-Secondary1_s50 rounded-lg px-2 py-1 text-center text-lg '>AskQuestion</Link> 
         <div className='flex flex-col gap-5 w-full justify-start items-center'>
             {   userQuestion?.map((question)=>( <div key={question?.Q_id} className='px-5 py-3 rounded-lg border-2 w-full flex flex-col gap-3'>
                     <Link to={`/question/${question?.Q_id}`} className='font-poppins text-xl text-Secondary1_Neutral line-clamp-1'>{question?.title}</Link>

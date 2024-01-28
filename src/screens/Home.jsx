@@ -6,6 +6,13 @@ import Question from '../Components/Question';
 import  axios  from 'axios';
 import { Link } from 'react-router-dom';
 import HeadingTags from '../Components/Ribbon/HeadingTags';
+import {Swiper , SwiperSlide} from 'swiper/react';
+
+import { IoIosArrowBack ,IoIosArrowForward } from "react-icons/io";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination ,Autoplay ,A11y ,Navigation } from 'swiper/modules';
+import { Develoer } from '../Components/Home/Develoer';
 const Home = () => {
   const [questions, setQuestions] = useState([])
   async function getQuestions(){
@@ -37,7 +44,18 @@ const Home = () => {
   return (
     < div className='space-y-12'
     >
-    <div className='w-full h-[400px] flex-col justify-center items-start flex px-5 gap-10  bg-Primary_p50 bg-center bg-cover'
+<div className='relative  mx-5  '>
+   
+      <Swiper 
+      allowSlideNext={true}
+      allowSlidePrev={true}
+      // thumbs={true}
+      navigation={{nextEl:".arrow-left", prevEl: ".arrow-right"}}
+        autoplay={{ delay: 4000 }} 
+      pagination={true} modules={[Pagination ,Autoplay , A11y ,Navigation ]} className="mySwiper max-h-[450px]">
+      
+        <SwiperSlide key={1}>
+                <div className='w-full h-[400px] flex-col justify-center items-start flex px-5 gap-10  bg-Primary_p50 bg-center bg-cover'
       style={{
         backgroundImage:`url(${imageSrc})`,
         backgroundRepeat:"no-repeat"
@@ -52,6 +70,31 @@ const Home = () => {
             Ask a question 
         </Link>
     </div>
+        </SwiperSlide>
+      <SwiperSlide key={2}>
+                <div className='w-full h-[400px] flex-col justify-center items-start flex px-5 gap-10  bg-Primary_p50 bg-center bg-cover'
+      style={{
+        backgroundImage:`url(${imageSrc})`,
+        backgroundRepeat:"no-repeat"
+}}
+    >
+        <h4 className='text-[44px] font-calligraffitti font-bold text-white '>Imperfect Community</h4>
+        <h5 className='text-2xl font-poppins font-semibold text-white ' >
+             Join Imperfect community to connect with parents of special children. In our supportive community, we celebrate uniqueness, share experiences, and find strength together. Your journey matters here
+
+        </h5> 
+        <Link to={'/question'} className='px-3 py-2 font-poppins font-semibold text-center text-white text-lg bg-Secondary1_Neutral rounded-lg'>
+            Ask a question 
+        </Link>
+    </div>
+        </SwiperSlide>
+     
+      </Swiper> 
+       <button className=" arrow-right arrow border-2 p-2 rounded-full "><IoIosArrowForward size={25}/></button>
+        <button className="arrow-left arrow border-2 p-2 rounded-full "><IoIosArrowBack size={25}/></button>
+    </div>
+
+    
     {/* our vision */}
     <div className='flex flex-col w-[95%] mx-auto justify-center items-center  gap-10  '>
                       <h3 className='text-Secondary1_Neutral text-[36px] font-poppins font-medium text-center'>
@@ -96,7 +139,7 @@ const Home = () => {
                       </div>
     </div>
     {/* How we help */}
-    <div className='flex flex-col w-[95%] mx-auto justify-center items-center  gap-10  '>
+    {/* <div className='flex flex-col w-[95%] mx-auto justify-center items-center  gap-10  '>
                       <h3 className='text-Secondary1_Neutral text-[36px] font-poppins font-medium text-center'>
                         <HeadingTags title={"How we help"}/>
                       </h3>
@@ -128,7 +171,7 @@ const Home = () => {
                         </div>
                
                       </div>
-    </div>
+    </div> */}
     <div className='flex flex-col w-[95%] mx-auto justify-center items-center  gap-10  '>
     <h3 className='text-Secondary1_Neutral text-[36px] font-poppins font-medium text-center'>
                        <HeadingTags title={"Who We Are"}/>
@@ -162,6 +205,7 @@ const Home = () => {
                       </div>
                    
     </div>
+    <Develoer/>
     </div>
 
   )

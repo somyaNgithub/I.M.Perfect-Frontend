@@ -42,10 +42,14 @@ function App() {
    <div> 
     <Header />
     <ScrollTop />
-    <Routes>
+   
+    <Routes> 
+      
       <Route path='/' element={<Home/>}/>
       
       <Route path='/login' element={<Login/>}/>
+      <Route path='/sign-up' element={<Login/>}/>
+      
       <Route path='/question' element={<AskQuestion/>}/>
       <Route path='/question/:id' element={<QuestionDetails/>}/>
       
