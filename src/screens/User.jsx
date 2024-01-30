@@ -5,12 +5,13 @@ import Hero1 from "../assets/hero1.jpg"
 import { BsCake } from "react-icons/bs";
 import { IoMailOutline } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
+import { EditorReadOnly } from '../Components/Editor/EditorReadOnly';
 const User = () => {
     const {id} = useParams()
     const [UserDatam , SetUserData] = useState('')
 
     useEffect(()=>{
-       axios.get(`http://3.108.227.195:8001/get_user/${id}/`)
+       axios.get(`http://3.108.227.195:8000/get_user/${id}/`)
        .then((res)=>{
         console.log(res)
         if(res?.status===200){
@@ -63,13 +64,19 @@ const User = () => {
                 {/* title */}
                 <h3 className='font-poppinsnpm i @editorjs/editorjs text-TextColor_Neutral font-medium text-2xl'>About Me</h3>
                 <p className='text-TextColor_T200 font-medium w-full flex'>
-                    sys System Configuration Management Administrator (ClearCase, SVN, Git), defining various merge workflows between branches.
+             
+                      {UserDatam?.about ? <EditorReadOnly 
+                          id={UserDatam?.U_id}
+                          data={UserDatam?.about ?? '{"name":"12",}'}
+                          key={'24'}
+                      /> :`sys System Configuration Management Administrator (ClearCase, SVN, Git), defining various merge workflows between branches.
 
-app Development Architect, which involves:
+                      app Development Architect, which involves:
 
-tools support around java technologies, including eclipse.
-code quality evaluation, including metrics definitions, and code static tools for different populations.
-code management (Jira, FishEye/Crucible, Maven, Hudson, Sonar)
+                      tools support around java technologies, including eclipse.
+                      code quality evaluation, including metrics definitions, and code static tools for different populations.
+code management (Jira, FishEye/Crucible, Maven, Hudson, Sonar)`}
+                    
 
                 </p>
             </div>

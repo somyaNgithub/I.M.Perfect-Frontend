@@ -13,6 +13,7 @@ import { Footer } from './Components/Footer'
 import { ProfilePage } from './screens/Profile'
 import MyQuestions from './screens/Profile/MyQuestions'
 import { QuestionDetails } from './screens/QuestionDetails'
+import { SignUp } from './screens/SignUp'
 function App() {
   const refreshToken = async () =>{
         if(localStorage?.getItem('Token_refresh')){
@@ -48,7 +49,7 @@ function App() {
       <Route path='/' element={<Home/>}/>
       
       <Route path='/login' element={<Login/>}/>
-      <Route path='/sign-up' element={<Login/>}/>
+      <Route path='/sign-up' element={<SignUp/>}/>
       
       <Route path='/question' element={<AskQuestion/>}/>
       <Route path='/question/:id' element={<QuestionDetails/>}/>

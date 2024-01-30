@@ -6,10 +6,8 @@
     transition: background-color .15s ease;
 }
 .ce-header{
-    font-size: x-large;
-    font-weight: 700;
     color: #525fe1;
-   
+    font-size: xx-large;    
 }
 .ce-paragraph{
     font-size: 20px;

@@ -4,7 +4,7 @@ import { IoEye, IoEyeOff } from 'react-icons/io5'
 // import { data } from 'autoprefixer'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate  = useNavigate()
@@ -115,7 +115,7 @@ const Login = () => {
                       </button>
 
                     </div>
-                    <h3>if do not have a account create one </h3>
+                    <h3>if do not have a account create <Link to={'/sign-up'} className='underline text-error'>New</Link> </h3>
 
                    </div>
         </div>
