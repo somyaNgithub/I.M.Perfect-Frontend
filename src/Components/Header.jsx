@@ -5,6 +5,7 @@ import { IoMdSearch } from "react-icons/io";
 import { UserProfilePopup } from './Popup/UserProfilePopup';
 import Logout from './Popup/Logout';
 import HeadingTags from './Ribbon/HeadingTags'
+import { IoHomeOutline } from "react-icons/io5";
 const Header = () => {
     const navigate = useNavigate()
     const [UserPoupOpen,setUserPoupOpen]= useState(false)
@@ -13,14 +14,14 @@ const Header = () => {
     const user = JSON.parse(localStorage.getItem('user'))
     return (
       <> 
-      <h3 className='text-6xl text-center mt-5 font-calligraffitti font-semibold text-pink-600'>IMERFECT</h3>
-  <div className='flex mx-auto justify-center text-3xl items-center'>
+      <h3 className='text-3xl md:text-6xl text-center mt-5 font-calligraffitti font-semibold text-pink-600'>IMERFECT</h3>
+  <div className='flex mx-auto justify-center text-lg md:text-3xl items-center'>
     <HeadingTags title={"Let's embrace the Flaws"} key={'topheading'}/></div>
     <div className='flex flxed top-2 py-2 my-5 z-50 items-center overflow-x-auto justify-between  w-[95%] mx-auto '>
        
-      <Link to='/' className='text-lg font-poppins font-medium text-TextColor_Neutral' >Home</Link>
+      <Link to='/' className='text-lg font-poppins font-medium text-TextColor_Neutral' ><IoHomeOutline size={20} /></Link>
       <Link to='/' className='text-lg font-poppins font-medium text-TextColor_Neutral' >About</Link>
-      <Link to ='/'className='text-lg font-poppins font-medium text-TextColor_Neutral' >For Expert</Link>
+      {/* <Link to ='/'className='text-lg font-poppins font-medium text-TextColor_Neutral' >For Expert</Link> */}
       <Link to ='/question'className='text-lg font-poppins font-medium text-TextColor_Neutral' >question</Link>
        <Link to ='/users'className='text-lg font-poppins font-medium text-TextColor_Neutral' >Users</Link>
             
