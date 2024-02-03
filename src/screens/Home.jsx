@@ -23,13 +23,13 @@ const Home = () => {
       }
     })
       .then((res) => {
-        console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
+        // console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
         const questionArray = res?.data 
         setQuestions(questionArray)
         if (res?.data?.api_status) {
           // setOrder_no(res?.data?.data)
-          console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
-          console.log(res?.data?.api_status,"result")
+          // console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
+          // console.log(res?.data?.api_status,"result")
         }
         else {
           // navigate(-1)
@@ -102,7 +102,7 @@ const Home = () => {
                       </h3>
                       <div className='w-full flex flex-col gap-5'>
                       <p
-                      className='w-full mx-5 flex  justify-center  items-center font-poppins text-center font-medium text-2xl '
+                      className='w-full mx-5 flex  justify-center  items-center font-poppins text-center font-normal text-xl '
                       >
                         Our vision for the Imperfect Community Plan stems from a profound belief in inclusivity and the collective strength that emerges from embracing diversity. We aspire to create a haven where special children and their parents feel not just accepted, but truly valued for their unique qualities. In our Imperfect Community, we aim to foster an environment that recognizes the individuality of every child and supports their journey towards a fulfilling life.
                       </p>
@@ -177,7 +177,7 @@ const Home = () => {
                        <HeadingTags title={"Who We Are"}/>
                         
                       </h3>
-                      <p className='text-2xl font-poppins font-medium text-center'>
+                      <p className='text-xl font-poppins font-normal  text-center'>
                       At ImperfectConnect, we are a dedicated community passionate about supporting parents of special children. We believe in the strength that comes from embracing differences and the power of shared experiences. Our platform is a safe haven where understanding thrives, resilience is celebrated, and every parent finds the support they need. Together, we navigate the unique journey of raising extraordinary children, fostering a sense of belonging and empowerment. Welcome to ImperfectConnect – where your story is at the heart of our community.
                       </p>
     </div>

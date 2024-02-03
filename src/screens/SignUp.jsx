@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import { GrAttachment } from 'react-icons/gr'
 import { Editor } from '../Components/Editor';
-
+import { FaRegCircleUser } from "react-icons/fa6";
 import { SlArrowLeft } from 'react-icons/sl'
 import { MdOutlineCancel } from 'react-icons/md'
 const SignUp = () => {
@@ -27,7 +27,7 @@ const SignUp = () => {
   const [fileName, setFileName] = useState('')
   const [selectedFile, setSelectedFile] = useState(null)
   const [file1, setFile] = useState(null)
-
+  const [userType, setUserType] = useState('parent')
   const handlePassword = () => {
     setPasswordIsVisual(pre => !pre)
   }
@@ -131,27 +131,61 @@ const SignUp = () => {
       // Handle validation error (e.g., display an error message)
       return;
     }
+    const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8}$/;
+
+    if (!passwordPattern.test(password)) {
+      console.log("Invalid password format");
+      toast.error('Invalid password format', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      // Handle validation error for password (e.g., display an error message)
+      return;
+    }
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+    if (!emailPattern.test(email)) {
+      console.log("Invalid email format");
+      toast.error('Invalid email format', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      // Handle validation error for email (e.g., display an error message)
+      return;
+    }
 
     const data = {
-     
+      "userType": userType,
       "password": password,
-    
       "userName": email,
       "fullName": fullname,
-       "about":about,
-          "age": age,
-            "gender":gender,
-              "address": address,
-                "mobileNo": mobileNo,
-                  "country": country,
-      "avatar": flieAttached }
+      "about": about,
+      "age": age,
+      "gender": gender,
+      "address": address,
+      "mobileNo": mobileNo,
+      "country": country,
+      "avatar": flieAttached
+    }
     await axios.post('http://3.108.227.195:8000/signup/', data, {
       headers: {
         "Content-Type": "application/json",
         // "token": token
       }
     }).then((res) => {
-      console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
+      // console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
       // const questionArray = res?.data 
       // setQuestions(questionArray)
       toast.success('Account Created  successfully', {
@@ -168,7 +202,7 @@ const SignUp = () => {
 
       if (res?.data?.U_id) {
         // setOrder_no(res?.data?.data)
-      
+
         console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
         console.log(res?.data?.api_status, "result")
         toast.success('Account Created  successfully', {
@@ -217,8 +251,20 @@ const SignUp = () => {
     <div className='w-full justify-center items-center flex py-3 md:py-5  bg-pink-100'>
       <div className=' mx-auto flex px-5 py-5 flex-col gap-5 justify-center items-center bg-white rounded-lg shadow-md  '>
         <h3 className='text-pink-400 text-2xl font-poppins font-semibold  '>SignUp</h3>
+        <div className='px-5 my-5 flex flex-col-reverse gap-2 bg-white rounded-lg font-poppins py-3 items-center  border-border_Neutral justify-between  '>
+
+          <label htmlFor='attachFile' className='cursor-pointer rounded-md bg-pink-200 px-2 py-1'>Upload Profile Photo</label>
+          <input type='file'
+            accept="image/png, image/jpeg "
+            id='attachFile'
+            onChange={getImageSizeInKB}
+            placeholder='Select a file or drag and drop here'
+            className='w-full hidden border rounded-lg' />
+          {imageSizeKB ? <><div className='relative py-1 pt-2 pr-2 text-error'><div><img src={flieAttached} className='w-20 h-20 rounded-md' /></div> <button onClick={() => removeFile()} className='absolute top-0 right-0'><MdOutlineCancel className='w-5 h-5 rounded-full' /></button> </div></> : <FaRegCircleUser size={80} />}
+
+        </div>
         <div className='w-full space-y-5'>
-          <div className='flex gap-3'>
+          <div className='flex gap-3 flex-wrap'>
             <div className='text-TextColor_Neutral text-base w-full flex flex-col  gap-[10px]'>
               <label>Full Name</label>
               <input
@@ -230,24 +276,22 @@ const SignUp = () => {
               />
             </div>
             <div className='text-TextColor_Neutral text-base w-full flex flex-col gap-[10px] '>
-              <label>email</label>
-              <div className='w-full items-center px-1 flex border focus:border-pink-400 hover:border-pink-400 rounded-lg'>
-                <input
-                  type={"text"}
-                  value={email}
-                  onChange={(e) => setEmail(e?.target?.value)}
-                  className='focus:outline-none    px-5 py-2'
-                  placeholder='Enter Password'
-                />
-                <button onClick={handlePassword}>
-                  {passwordIsVisual ? <IoEye size={20} className='text-pink-300' /> : <IoEyeOff size={20} className='text-text_disable' />
-                  }
-                </button>
-              </div>
+              <label>Email</label>
+              {/* <div className='w-full items-center px-1 flex border focus:border-pink-400 hover:border-pink-400 rounded-lg'> */}
+              <input
+                type={"text"}
+                value={email}
+                onChange={(e) => setEmail(e?.target?.value)}
+                placeholder='Enter Email'
+                className='focus:outline-none rounded-lg focus:border-pink-400 border-2 px-5 py-2'
+
+              />
+
+              {/* </div> */}
 
             </div>
           </div>
-          <div className='flex gap-3'>
+          <div className='flex flex-wrap gap-3'>
             <div className='text-TextColor_Neutral text-base w-full flex flex-col  gap-[10px]'>
               <label>Gender</label>
               <select
@@ -274,7 +318,7 @@ const SignUp = () => {
           </div>
           <div className='flex gap-3'>
             <div className='text-TextColor_Neutral text-base w-full flex flex-col  gap-[10px]'>
-              <label>Gender</label>
+              <label>Country</label>
               <select
                 value={country}
                 onChange={e => setCountry(e.target.value)}
@@ -300,16 +344,16 @@ const SignUp = () => {
           </div>
           <h3 className='text-lg font-poppins font-normal'>Address</h3>
           <textarea value={address}
-          onChange={(e)=>setAddress(e.target.value)}
-          rows={4} 
-          className='w-full px-3  py-2 border-2 border-text_disable rounded-lg' />
+            onChange={(e) => setAddress(e.target.value)}
+            rows={4}
+            className='w-full px-3  py-2 border-2 border-text_disable rounded-lg' />
 
 
           <h3 className='text-lg font-poppins font-normal'>Bio</h3>
           <Editor data='{"mdohit":"32"}' setJSONData={setAbout} id={"editorAbout"} />
 
           <div className='flex gap-3'>
-            <div className='px-5 my-5 flex flex-col-reverse bg-white rounded-lg font-poppins py-3 items-center  border-border_Neutral justify-between  '>
+            {/* <div className='px-5 my-5 flex flex-col-reverse bg-white rounded-lg font-poppins py-3 items-center  border-border_Neutral justify-between  '>
 
               <label htmlFor='attachFile'>Profile Photo</label>
               <input type='file'
@@ -318,9 +362,21 @@ const SignUp = () => {
                 onChange={getImageSizeInKB}
                 placeholder='Select a file or drag and drop here'
                 className='w-full hidden border rounded-lg' />
-              {/* {imageSizeKB ? <p>Image size: {imageSizeKB} KB <br />Name :{fileName}</p> : <p></p>} */}
               {imageSizeKB ? <><div className='relative py-1 pt-2 pr-2 text-error'><div><img src={flieAttached} className='w-20 h-20 rounded-md' /></div> <button onClick={() => removeFile()} className='absolute top-0 right-0'><MdOutlineCancel className='w-5 h-5 rounded-full' /></button> </div></> : null}
 
+            </div> */}
+            <div className='text-TextColor_Neutral text-base w-full flex flex-col  gap-[10px]'>
+              <label>User Type</label>
+              <select
+                value={userType}
+                onChange={e => setUserType(e.target.value)}
+                className='focus:outline-none rounded-lg focus:border-pink-400 border-2 px-5 py-2'
+              
+              >
+                <option value={'expert'}>Expert</option>
+                <option value={'parent'}>Parent</option>
+                <option value={'special_person'}>Special Person</option>
+              </select>
             </div>
             <div className='text-TextColor_Neutral text-base w-full flex flex-col gap-[10px] '>
               <label>Password</label>
@@ -340,7 +396,7 @@ const SignUp = () => {
 
             </div>
           </div>
-         
+
 
           <div className='justify-center flex'>
             <button onClick={userSignUp} className='bg-[#ffce00] rounded-lg px-5 font-medium font-poppins text-white text-lg '>
@@ -348,7 +404,6 @@ const SignUp = () => {
             </button>
 
           </div>
-          <h3>if do not have a account create one </h3>
 
         </div>
       </div>

@@ -1,22 +1,27 @@
 .ce-block__content {
     position: relative;
-    max-width: 88% !important;
+    max-width: 95% !important;
     margin: 0 auto;
     -webkit-transition: background-color .15s ease;
     transition: background-color .15s ease;
+    gap: 8px;
 }
 .ce-header{
     color: #525fe1;
     font-size: xx-large;    
 }
 .ce-paragraph{
-    font-size: 20px;
+    /* font-size: 20px; */
     color: black;
     font-weight: 600;
 }
+.ce-paragraph a{
+    text-decoration: underline;
+    color: blue;
+}
 .cdx-list__item{
     font-weight: 500;
-    font-size: 18px;
+    /* font-size: 18px; */
     color: #454545;
 }
 .ce-toolbar__content {
@@ -26,7 +31,7 @@
 }
 
 .codex-editor__redactor {
-    padding-bottom: 20px !important;
+    padding-bottom: 10px !important;
 }
 
 .editorJs {

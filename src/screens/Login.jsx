@@ -34,8 +34,8 @@ const Login = () => {
         localStorage?.setItem("Token",res?.data?.Token?.access)
         localStorage?.setItem("Token_refresh",res?.data?.Token?.refresh)
         localStorage?.setItem("user",JSON?.stringify(res?.data?.user))
-        console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
-        console.log(res?.data?.api_status,"result")
+        // console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
+        // console.log(res?.data?.api_status,"result")
           toast.success('Login successfully', {
             position: "top-right",
             autoClose: 5000,
@@ -83,7 +83,7 @@ const Login = () => {
                     <h3 className='text-pink-400 text-2xl font-poppins font-semibold  '>Login</h3>
                    <div className='w-full space-y-5'>
                     <div className='text-TextColor_Neutral text-base w-full flex flex-col  gap-[10px]'>
-                     <label>User Name</label>
+                     <label>UserName</label>
                      <input  
                      type='email'
                      value={email}
@@ -94,7 +94,7 @@ const Login = () => {
                     </div>
                     <div className='text-TextColor_Neutral text-base w-full flex flex-col gap-[10px] '>
                      <label>Password</label>
-                     <div className='w-full items-center px-1 flex border focus:border-pink-400 hover:border-pink-400 rounded-lg'>
+                     <div className='w-full items-center px-1 flex border-2 focus:border-pink-400 hover:border-pink-400 rounded-lg'>
                      <input  
                      type={passwordIsVisual?"text":"password"}
                      value={password}

@@ -56,7 +56,7 @@ const EditorReadOnly = ({ data, id, setJSONData }) => {
   }
 
   return (
-    <div id={id} className='editorJs rounded-lg mb-3 mt-1 border-2'></div>
+    <div id={id} className='editorJs rounded-lg  mt-1 '></div>
   );
 }
 

@@ -7,7 +7,7 @@ const Develoer = () => {
     <div
     className='w-full flex  justify-between gap-10 my-7 items-center flex-col'
     >
-      <h3 className='text-5xl font-medium font-poppins  '>Our Develoer</h3>  
+      <h3 className='text-5xl font-medium font-poppins  '>Our Developer</h3>  
            <div className='flex flex-col sm:flex-row mt-20 justify-between gap-10 items-center mx-auto'>
             <Dev
             name={'Somya Namdeo'}
@@ -33,7 +33,7 @@ export { Develoer}
 
 const Dev = ({ name , img , role , linkdin , github  }) =>{
          return (
-            <div className='w-[360px] flex flex-col min-h-[240px] relative rounded-lg shadow-lg bg-pink-300 items-center'>
+            <div className='w-[360px] flex flex-col min-h-[240px] max-md:mt-[100px] relative rounded-lg shadow-lg bg-pink-300 items-center'>
                 <div className='w-[200px] h-[200px] absolute top-[-100px] rounded-full flex mx-auto items-center justify-center'>
                     <img src={img} alt='name' className='object-cover rounded-full w-full h-full'/>
                 </div>

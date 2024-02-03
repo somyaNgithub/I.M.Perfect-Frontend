@@ -51,8 +51,8 @@ const QuestionDetails = () => {
         if (res?.data?.api_status) {
           // setOrder_no(res?.data?.data)
           setAnswerArray(res?.data)
-          console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
-          console.log(res?.data?.api_status,"result")
+          // console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
+          // console.log(res?.data?.api_status,"result")
         }
         else {
           // navigate(-1)
@@ -75,7 +75,7 @@ async function writeanswer(){
       }
     })
       .then((res) => {
-        console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
+        // console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
         // const questionArray = res?.data 
         // setSelectedQuestion(questionArray?.find((question)=>question?.Q_id === id))
         if (res?.data?.A_id) {

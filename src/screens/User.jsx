@@ -15,7 +15,7 @@ const User = () => {
     useEffect(()=>{
         axios.get(`http://3.108.227.195:8000/get_user/${id ?? myUserId}/`)
        .then((res)=>{
-        console.log(res)
+        // console.log(res)
         if(res?.status===200){
             SetUserData(res?.data)
         }
@@ -23,7 +23,7 @@ const User = () => {
        
         axios.get(`http://3.108.227.195:8000/user-questions/${id ?? myUserId}`)
             .then((res) => {
-                console.log(res,"@####################$$$$$#########")
+                // console.log(res,"@####################$$$$$#########")
                 if (res?.data?.api_status) {
                     setUserQuestion(res?.data?.data)
                 }
