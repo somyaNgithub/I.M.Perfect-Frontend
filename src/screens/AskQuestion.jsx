@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
@@ -61,9 +61,13 @@ const AskQuestion = () => {
       })
       .catch((err) => { console.log("error contact us", err) }) 
    }
-
-
-
+   const hasToken = localStorage.getItem('Token')
+   
+   useEffect(()=>{
+    if(!hasToken){
+          navigate('/login')
+    }
+   },[])
 
 
   return (

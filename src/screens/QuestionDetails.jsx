@@ -131,16 +131,17 @@ async function writeanswer(){
            
               <div className='w-full flex flex-col gap-3'>
                 <h3 className='text-lg font-poppins font-medium text-TextColor_T200'>total aanswers {answerArray?.count_of_anser??0}</h3>
-                  {answerArray?.data?.map((ans)=>{ return (<div className='border-2 rounded-lg text-xl font-poppins text-TextColor_Neutral gap-2'>
+                  {answerArray?.data?.map((ans)=>{ return (<div key={ans?.A_id} className='border-2 rounded-lg text-xl font-poppins text-TextColor_Neutral gap-2'>
                   <h3 className='px-5 py-3'>{ans?.Answer}</h3>
-                  <div className='flex justify-between px-5 pt-5 items-center text-TextColor_Neutral bg-Secondary1_s50 '>
+                  <div className='flex justify-between px-5 py-3 items-center text-TextColor_Neutral bg-Secondary1_s50 '>
                     <h3 className='capitalize'>created at {ans?.pub_date?formatDateTime(ans?.pub_date):null} </h3> 
-                    <div className='justify-center flex flex-col gap-2 items-center'>
+                    <div className='justify-center flex  gap-2 items-center'>
                       <div className='w-10 h-10 flex justify-center items-center'>
-                        <img src={ans?.user?.avatar} alt='' className='w-full object-cover'/>
-                      </div>
-                      <h3 className='text-TextColor_T500 font-semibold'>{ans?.user?.fullName}</h3>
-                      <h3>{ans?.user?.userType}</h3>
+                        <img src={ans?.user?.avatar} alt='' className='w-full h-10 object-cover rounded-md'/>
+                      </div> 
+                        <div> <h3 className='text-TextColor_T500 capitalize font-semibold'>{ans?.user?.fullName}</h3>
+                          <h3 className='text-sm '>{ans?.user?.userType}</h3></div>
+                     
                       
                     </div>
                   </div>

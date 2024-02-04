@@ -66,12 +66,12 @@ const Home = () => {
              Join Imperfect community to connect with parents of special children. In our supportive community, we celebrate uniqueness, share experiences, and find strength together. Your journey matters here
 
         </h5> 
-        <Link to={'/question'} className='px-3 py-2 font-poppins font-semibold text-center text-white text-lg bg-Secondary1_Neutral rounded-lg'>
+              <Link to={'/ask-question'} className='px-3 py-2 font-poppins font-semibold text-center text-white text-lg bg-Secondary1_Neutral rounded-lg'>
             Ask a question 
         </Link>
     </div>
         </SwiperSlide>
-          <SwiperSlide key={1}>
+          <SwiperSlide key={2}>
             <div className='w-full h-[400px] flex-col justify-center items-start flex px-5 gap-10  bg-Primary_p50 bg-center bg-cover'
               style={{
                 backgroundImage: `url(${imageSrc})`,
@@ -83,7 +83,7 @@ const Home = () => {
                 Join Imperfect community to connect with parents of special children. In our supportive community, we celebrate uniqueness, share experiences, and find strength together. Your journey matters here
 
               </h5>
-              <Link to={'/question'} className='px-3 py-2 font-poppins font-semibold text-center text-white text-lg bg-Secondary1_Neutral rounded-lg'>
+              <Link to={'/ask-question'} className='px-3 py-2 font-poppins font-semibold text-center text-white text-lg bg-Secondary1_Neutral rounded-lg'>
                 Ask a question
               </Link>
             </div>
@@ -191,7 +191,7 @@ const Home = () => {
                         className='border-2 border-Secondary1_Neutral ring-2 bg-Secondary1_s50 rounded-lg px-2 py-1 text-center text-lg ' >Ask a question</Link>
                       </div>
                       <div className='w-full flex flex-col justify-center items-center mx-auto gap-3'>
-                       {questions?.map((question)=>(
+                       {questions?.slice(0,5)?.map((question)=>(
                          <Question 
                          title={question?.title}
                          details={question?.description }
@@ -199,6 +199,8 @@ const Home = () => {
                          userName={question?.user?.fullName}
                          publish={question?.pub_date  }
                          avtar={question?.user?.avatar}
+                         Qus_U_id={question?.U_id}
+                         setQuestion={setQuestions}
                          />
                        ))}
                      

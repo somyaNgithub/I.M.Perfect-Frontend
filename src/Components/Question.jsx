@@ -1,19 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
-const Question = ({title, details , q_id ,publish , userName , avtar}) => {
+import {DeleteQuestion} from '../Components/Popup/DeleteQuestion'
+const Question = ({title, details , q_id ,publish , userName , avtar , Qus_U_id , setQuestion}) => {
+  const U_id = JSON.parse(localStorage.getItem('user'))?.U_id;
+  const [deletePopup,setDeletePopup] = useState(false)
   return (
-    <div className='w-4/5 py-2 px-5  group  bg-white gap-5 border rounded-lg shadow-lg flex  '>
+    <div className='w-[94%]  py-2 px-5  group  bg-white gap-5 border rounded-lg shadow-lg flex  '>
    
       <div className='w-full flex flex-col justify-center items-start gap-1'>
-      <Link 
-      to={`/question/${q_id}`}
-      className='text-xl text-TextColor_Neutral hover:text-Secondary1_Neutral text-left font-poppins font-medium line-clamp-1'>
-    {
-      title
-    }  
-     </Link>
-    
+      <div className='flex w-full justify-between gap-1'>
+          <Link
+            to={`/question/${q_id}`}
+            className='text-xl text-TextColor_Neutral hover:text-Secondary1_Neutral text-left font-poppins font-medium line-clamp-1'>
+            {
+              title
+            }
+          </Link>
+          {Qus_U_id === U_id?<div className='flex gap-2 items-center'>
+            <button className='bg-Secondary1_Neutral ring-2 ring-Secondary1_Neutral text-white px-2 py-1 rounded-md border'>Edit</button>
+            <button onClick={()=>setDeletePopup(true)} className='bg-error text-white ring-2 ring-error px-2 py-1 rounded-md border'>Delete</button>
+          </div>:null}
+      </div>
+      
+        {console.log(publish)}
       {/* <Link className='text-lg font-poppins '>
     view Answer
          </Link> */}
@@ -36,8 +45,10 @@ const Question = ({title, details , q_id ,publish , userName , avtar}) => {
 
       </div>
    
-    
-    </div>
+   {Qus_U_id ===U_id?
+     <DeleteQuestion isOpen={deletePopup} closeModal={()=>setDeletePopup(false)} Q_id={q_id} key={q_id} setQuestions={setQuestion} /> 
+   :null}
+     </div>
   )
 }
 
