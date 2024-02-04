@@ -248,7 +248,7 @@ const SignUp = () => {
       })
   }
   return (
-    <div className='w-full justify-center items-center flex py-3 md:py-5  bg-pink-100'>
+    <div className='w-full max-sm:max-w-[420px] justify-center items-center flex py-3 md:py-5  bg-pink-100'>
       <div className=' mx-auto flex px-5 py-5 flex-col gap-5 justify-center items-center bg-white rounded-lg shadow-md  '>
         <h3 className='text-pink-400 text-2xl font-poppins font-semibold  '>SignUp</h3>
         <div className='px-5 my-5 flex flex-col-reverse gap-2 bg-white rounded-lg font-poppins py-3 items-center  border-border_Neutral justify-between  '>
