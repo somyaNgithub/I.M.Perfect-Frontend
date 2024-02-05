@@ -5,6 +5,7 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Editor } from '../Components/Editor';
+import Header  from '../Components/Header'
 import { EditorReadOnly } from '../Components/Editor/EditorReadOnly';
 const AskQuestion = () => {
     // const {q_id} = useParams()
@@ -71,6 +72,8 @@ const AskQuestion = () => {
 
 
   return (
+    <>
+    <Header/>
     <div className='w-[90%]  mx-auto justify-start items-start flex flex-col gap-10'>
       <h3 className='text-5xl font-poppins font-bold text-TextColor_T500'>Ask A public Question</h3>
       <div className='bg-pink-100 w-full rounded-xl flex flex-col px-5 py-5 gap-5'>
@@ -141,6 +144,7 @@ pauseOnHover
 theme="light"
 />
     </div>
+    </>
   )
 }
 

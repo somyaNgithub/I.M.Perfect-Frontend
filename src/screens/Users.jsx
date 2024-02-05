@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import userimg from "../assets/hero1.jpg"
 import { Link } from 'react-router-dom'
+import Header from '../Components/Header'
 const Users = () => {
     const [userList,setUserList] = useState([])
   const [userType, setUserType] = useState('all')
@@ -23,7 +24,9 @@ const Users = () => {
   }
 //  console.log(userList , "user list")
   useEffect(()=>{getUsers()},[])
-  return (
+  return ( 
+    <> 
+      <Header/>
     <div className='w-[95%] flex   flex-col justify-start gap-5 md:gap-10 mx-auto  '>
    <div className='flex justify-between items-center'>
       <h3 className='text-3xl font-calligraffitti font-medium text-TextColor_Neutral'> Users</h3> 
@@ -68,6 +71,7 @@ const Users = () => {
                 }
               </div>
     </div>
+    </>
   )
 }
 

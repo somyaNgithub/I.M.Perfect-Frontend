@@ -42,7 +42,7 @@ function App() {
   
   return (
    <div> 
-    <Header />
+    {/* <Header /> */}
     <ScrollTop />
    
     <Routes> 

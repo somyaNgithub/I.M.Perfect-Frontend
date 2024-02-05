@@ -7,12 +7,13 @@ import  axios  from 'axios';
 import { Link } from 'react-router-dom';
 import HeadingTags from '../Components/Ribbon/HeadingTags';
 import {Swiper , SwiperSlide} from 'swiper/react';
-
+import Header from '../Components/Header'
 import { IoIosArrowBack ,IoIosArrowForward } from "react-icons/io";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination ,Autoplay ,A11y ,Navigation } from 'swiper/modules';
 import { Develoer } from '../Components/Home/Develoer';
+import home_page_banner from '../assets/home_page_banner.png'
 const Home = () => {
   const [questions, setQuestions] = useState([])
   async function getQuestions(){
@@ -42,6 +43,11 @@ const Home = () => {
     getQuestions()
   },[])
   return (
+    <> 
+    <div className='w-full flex justify-center items-center bg-gray-100 bg-opacity-80'>
+        <img src={home_page_banner} alt='home banner' className='w-[320px] h-[120px]' />
+    </div>
+    <Header/>
     < div className='space-y-12'
     >
 <div className='relative  mx-5  '>
@@ -193,6 +199,7 @@ const Home = () => {
                       <div className='w-full flex flex-col justify-center items-center mx-auto gap-3'>
                        {questions?.slice(0,5)?.map((question)=>(
                          <Question 
+                         key={question?.Q_id}
                          title={question?.title}
                          details={question?.description }
                          q_id={question?.Q_id}
@@ -209,7 +216,7 @@ const Home = () => {
     </div>
     <Develoer/>
     </div>
-
+</>
   )
 }
 

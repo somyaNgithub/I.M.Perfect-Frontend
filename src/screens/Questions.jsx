@@ -4,6 +4,7 @@ import userimg from "../assets/hero1.jpg"
 import { Link } from 'react-router-dom'
 import Question from '../Components/Question'
 import { GoSearch } from 'react-icons/go'
+import Header from '../Components/Header'
 const QuestionPage = () => {
     const [questions, setQuestions] = useState([])
     const [searchByName, setSearchByName] = useState(null)
@@ -52,7 +53,9 @@ const QuestionPage = () => {
     useEffect(() => {
         getQuestions()
     }, [])
-    return (
+    return ( 
+        <>
+        <Header/>
         <div className='w-[95%] flex   flex-col justify-start gap-5 md:gap-10 mx-auto  '>
             <div className='flex justify-between items-center'>
                 <h3 className='text-3xl font-calligraffitti font-medium text-TextColor_Neutral'>All Questions</h3>
@@ -96,6 +99,7 @@ const QuestionPage = () => {
              
             </div>
         </div>
+        </>
     )
 }
 

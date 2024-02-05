@@ -5,6 +5,7 @@ import { EditorReadOnly } from '../Components/Editor/EditorReadOnly'
 import { formatDateTime } from '../utils/dateFormater'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Header from '../Components/Header'
 
 const QuestionDetails = () => {
     const {id} = useParams()
@@ -108,6 +109,8 @@ async function writeanswer(){
     getAnswersForQuestion()
   },[])
   return (
+    <>
+    <Header/>
     <div className='w-[95%] mx-auto flex flex-col p-5 gap-10'>
           <div className='flex justify-between w-full items-center'>
             
@@ -179,6 +182,7 @@ theme="light"
 />
               {console?.log(selectedQuestion ,"44444444444444444444444",answerArray)}
     </div>
+    </>
   )
 }
 

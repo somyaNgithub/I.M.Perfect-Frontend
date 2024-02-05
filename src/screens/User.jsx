@@ -5,6 +5,7 @@ import Hero1 from "../assets/hero1.jpg"
 import { BsCake } from "react-icons/bs";
 import { IoMailOutline } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
+import Header from '../Components/Header'
 import { EditorReadOnly } from '../Components/Editor/EditorReadOnly';
 import { formatDateTime } from '../utils/dateFormater';
 const User = () => {
@@ -30,7 +31,9 @@ const User = () => {
             }).catch((err) => console.log(err))
        
     },[id])
-  return (
+  return ( 
+    <>
+    <Header/>
     <div className='flex flex-col w-[95%] mx-auto gap-10'>
         {/* user hoto nd basic details */}
         <div className='w-full flex flex-col md:flex-row flex-wrap gap-5 items-start justify-center md:items-center md:justify-start'>
@@ -106,6 +109,7 @@ code management (Jira, FishEye/Crucible, Maven, Hudson, Sonar)`}
               </div>
         </div>
     </div>
+      </>
   )
 }
 
