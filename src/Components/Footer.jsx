@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <div className='bg-black w-full flex justify-between items-start flex-wrap mt-5 py-5 px-5 '>
+    <div className='bg-black w-full flex justify-between items-start flex-wrap mt-0 py-5 px-5 '>
         {/* details  */}
         <div className='flex flex-col gap-3  '>
             <Link to={'/'} className='font-calligraffitti font-semibold text-4xl text-pink-400'>IMPERFECT</Link>

@@ -2,6 +2,7 @@ import React, { useDeferredValue, useEffect, useState } from 'react'
 import axios from 'axios'
 import userimg from "../assets/hero1.jpg"
 import { Link } from 'react-router-dom'
+// import {EditQuestion} from '../Components/Popup/EditQuestion'
 import Question from '../Components/Question'
 import { GoSearch } from 'react-icons/go'
 import Header from '../Components/Header'
@@ -56,7 +57,7 @@ const QuestionPage = () => {
     return ( 
         <>
         <Header/>
-        <div className='w-[95%] flex   flex-col justify-start gap-5 md:gap-10 mx-auto  '>
+        <div className='w-[95%] flex  my-5 flex-col justify-start gap-5 md:gap-10 mx-auto  '>
             <div className='flex justify-between items-center'>
                 <h3 className='text-3xl font-calligraffitti font-medium text-TextColor_Neutral'>All Questions</h3>
                 <div className=' flex flex-row items-center px-2 py-1 border border-[#575757] rounded-lg'>
@@ -99,6 +100,7 @@ const QuestionPage = () => {
              
             </div>
         </div>
+        {/* <EditQuestion /> */}
         </>
     )
 }

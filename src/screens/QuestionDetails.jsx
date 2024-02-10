@@ -111,7 +111,7 @@ async function writeanswer(){
   return (
     <>
     <Header/>
-    <div className='w-[95%] mx-auto flex flex-col p-5 gap-10'>
+    <div className='w-[95%] mx-auto flex flex-col my-5 p-5 gap-10'>
           <div className='flex justify-between w-full items-center'>
             
             <h3 className='text-2xl font-poppins font-medium '>
@@ -182,6 +182,7 @@ theme="light"
 />
               {console?.log(selectedQuestion ,"44444444444444444444444",answerArray)}
     </div>
+    
     </>
   )
 }

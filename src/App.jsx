@@ -57,7 +57,7 @@ function App() {
       
       <Route path='/ask-question' element={<AskQuestion/>}/>
        <Route path ='/users' element={<Users/>}/>
-       <Route path='/user/:id' element={<User/>}/>
+       <Route path='/user/:id' element={<User hidHeader={true}/>}/>
        <Route path='/profile' element={<ProfilePage/>}>
         <Route path='edit' element={<User />}/>
         <Route path='my-question' element={<MyQuestions/>}/>

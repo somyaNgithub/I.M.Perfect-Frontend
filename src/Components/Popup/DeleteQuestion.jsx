@@ -2,15 +2,8 @@ import axios from 'axios';
 import React from 'react'
 import ReactDom from 'react-dom'
 import { useNavigate } from 'react-router-dom';
-// import {useTranslation} from "react-i18next";
 const DeleteQuestion = ({ isOpen, closeModal ,Q_id , setQuestions }) => {
-    // const navigate = useNavigate();
-    // const {t} = useTranslation()
    async function Delete() {
-        // localStorage.clear()
-        // closeModal()
-        // navigate('/');
-        // alert('wo')
         const data = {
             "Q_id":Q_id
         }
@@ -26,20 +19,8 @@ const DeleteQuestion = ({ isOpen, closeModal ,Q_id , setQuestions }) => {
            data
        })
            .then((res) => {
-            //    console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
-            //    const questionArray = res?.data
-            //    setQuestions(questionArray)
                closeModal()
                setQuestions((qus)=>(qus?.filter((q)=>(q?.Q_id !== Q_id))))
-               if (res?.data?.api_status) {
-                   // setOrder_no(res?.data?.data)
-                   // console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
-                   // console.log(res?.data?.api_status,"result")
-               }
-               else {
-                   // navigate(-1)
-               }
-
            })
            .catch((err) => { console.log("error contact us", err) })
     }
@@ -73,13 +54,8 @@ const DeleteQuestion = ({ isOpen, closeModal ,Q_id , setQuestions }) => {
                         className='border border-Secondary2_Neutral  rounded-lg px-10 py-[10px] text-Secondary2_Neutral '>Cancel</button>
                     <button
                         onClick={() => Delete()}
-                        className='border  bg-error rounded-lg px-10 py-[10px] text-white'>Logout</button>
+                        className='border  bg-error rounded-lg px-10 py-[10px] text-white'>Delete</button>
                 </div>
-                {/* <button 
-        className='px-[3.7rem] py-3 font-poppins text-TextColor_Neutral font-medium text-lg'
-        onClick={()=>Logout()}>
-            Logout
-        </button> */}
 
             </div>
         </>, document.getElementById('portal-root')

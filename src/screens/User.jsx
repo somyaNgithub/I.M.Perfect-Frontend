@@ -8,7 +8,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import Header from '../Components/Header'
 import { EditorReadOnly } from '../Components/Editor/EditorReadOnly';
 import { formatDateTime } from '../utils/dateFormater';
-const User = () => {
+const User = ({hidHeader}) => {
     const {id} = useParams()
     const [UserDatam , SetUserData] = useState('')
     const [userQuestion, setUserQuestion] = useState([])
@@ -33,8 +33,9 @@ const User = () => {
     },[id])
   return ( 
     <>
-    <Header/>
-    <div className='flex flex-col w-[95%] mx-auto gap-10'>
+          {!hidHeader ? null : <Header />}
+    
+    <div className='flex flex-col w-[95%] my-5 mx-auto gap-10'>
         {/* user hoto nd basic details */}
         <div className='w-full flex flex-col md:flex-row flex-wrap gap-5 items-start justify-center md:items-center md:justify-start'>
             <div className='w-[200px] h-[200px] flex items-center justify-center'>
