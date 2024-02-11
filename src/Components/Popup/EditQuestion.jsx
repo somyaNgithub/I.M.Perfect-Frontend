@@ -4,29 +4,37 @@ import ReactDom from 'react-dom'
 import { useNavigate } from 'react-router-dom';
 import { Editor } from '../Editor';
 const EditQuestion = ({ isOpen, closeModal, Q_id, setQuestions , questionTitle, questionDetils }) => {
+    const navigate = useNavigate()
     async function Delete() {
         const data = {
-            "Q_id": Q_id
+            'title':title, 
+            'description':details
         }
 
         const token = localStorage.getItem('Token')
         console.log('Token:', token);
-        await axios.delete(`//3.108.227.195:8000/question-delete`, {
+      
+        await axios.patch(`//3.108.227.195:8000/update-question/${Q_id}/`, data, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": token,
                 //    "Authorization":token,
             },
-            data
+            
         })
             .then((res) => {
-                closeModal()
-                setQuestions((qus) => (qus?.filter((q) => (q?.Q_id !== Q_id))))
+                // closeModal()
+                // console.log(res)
+                // if (res?.Q_id){
+                navigate(`/question/${Q_id}`)
+                // }
+                // setQuestions((qus) => (qus?.filter((q) => (q?.Q_id !== Q_id))))
             })
             .catch((err) => { console.log("error contact us", err) })
     }
     const [title,setTitle] = useState(questionTitle??'')
     const [details,setDetails] = useState(questionDetils??'')
+   
     useEffect(() => {
         setDetails(questionDetils)
         setTitle(questionTitle)
@@ -58,7 +66,7 @@ const EditQuestion = ({ isOpen, closeModal, Q_id, setQuestions , questionTitle, 
                 </div>
                 <div className='w-full flex flex-col gap-2 '>
                     <h4 className='text-sm font-poppins font-medium '>Details</h4>
-                    <Editor data= {details??'{"mdohit":"32"}'} id={Q_id}
+                    <Editor data= {questionDetils??'{"mdohit":"32"}'} id={Q_id}
                      setJSONData={setDetails}
                       />
                 </div>

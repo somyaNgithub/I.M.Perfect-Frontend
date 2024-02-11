@@ -91,24 +91,25 @@ code management (Jira, FishEye/Crucible, Maven, Hudson, Sonar)`}
             </div>
         </div>
         {/* top question and answer  */}
-        <div className='flex flex-col w-full justify-center items-center gap-5'>
-            <h3 className='text-TextColor_Neutral font-poppins font-medium text-lg md:text-3xl'>Asked Question</h3>
-              <div className='flex flex-col gap-5 w-full justify-start items-center'>
-                  {userQuestion?.length>0? userQuestion?.map((question) => (<div key={question?.Q_id} className='px-5 py-3 rounded-lg border-2 w-full flex flex-col gap-3'>
-                      <Link to={`/question/${question?.Q_id}`} className='font-poppins text-xl text-Secondary1_Neutral line-clamp-1'>{question?.title}</Link>
-                      <div className='w-full flex justify-between items-center'>
+              {id ? <div className='flex flex-col w-full justify-center items-center gap-5'>
+                  <h3 className='text-TextColor_Neutral font-poppins font-medium text-lg md:text-3xl'>Asked Question</h3>
+                  <div className='flex flex-col gap-5 w-full justify-start items-center'>
+                      {userQuestion?.length > 0 ? userQuestion?.map((question) => (<div key={question?.Q_id} className='px-5 py-3 rounded-lg border-2 w-full flex flex-col gap-3'>
+                          <Link to={`/question/${question?.Q_id}`} className='font-poppins text-xl text-Secondary1_Neutral line-clamp-1'>{question?.title}</Link>
+                          <div className='w-full flex justify-between items-center'>
 
-                          <h3 className='justify-self-end text-base gap-2 text-TextColor_T200 font-poppins' >
-                              Created at  {question?.pub_date ? formatDateTime(question?.pub_date)?.slice(0, 11) : null} {question?.pub_date ? formatDateTime(question?.pub_date)?.slice(-8) : null}
-                          </h3>
-                      </div>
-                  </div>)):
+                              <h3 className='justify-self-end text-base gap-2 text-TextColor_T200 font-poppins' >
+                                  Created at  {question?.pub_date ? formatDateTime(question?.pub_date)?.slice(0, 11) : null} {question?.pub_date ? formatDateTime(question?.pub_date)?.slice(-8) : null}
+                              </h3>
+                          </div>
+                      </div>)) :
 
-                      <h3 className='text-TextColor_Neutral font-poppins font-medium text-base text-text_disable '>No  Question Asked till Now</h3>
+                          <h3 className='text-TextColor_Neutral font-poppins font-medium text-base text-text_disable '>No  Question Asked till Now</h3>
 
-                  }
-              </div>
-        </div>
+                      }
+                  </div>
+              </div>:null}
+      
     </div>
       </>
   )

@@ -100,7 +100,7 @@ const SignUp = () => {
   };
 
   async function userSignUp() {
-    if (!flieAttached|| !fullname || !age || !gender || !address || !mobileNo) {
+    if (!flieAttached|| !password || !fullname || !age || !gender || !address || !mobileNo) {
       console.log("All fields are required");
       toast.error('All fields are required', {
         position: "top-right",
@@ -119,35 +119,35 @@ const SignUp = () => {
     if (!mobileNumberPattern.test(mobileNo)) {
       console.log("Invalid mobile number format");
       toast.error('Invalid mobile number format', {
-        position: "top-right",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: "colored",
       })
       // Handle validation error (e.g., display an error message)
       return;
     }
-    // const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8}$/;
+    const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8}$/;
 
-    // if (!passwordPattern.test(password)) {
-    //   console.log("Invalid password format");
-    //   toast.error('Invalid password format', {
-    //     position: "top-right",
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "light",
-    //   });
-    //   // Handle validation error for password (e.g., display an error message)
-    //   return;
-    // }
+    if (!passwordPattern.test(password)) {
+      console.log("Invalid password format");
+      toast.error(`WARNING: Your password must meet the format`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      // Handle validation error for password (e.g., display an error message)
+      return;
+    }
     // const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
     // if (!emailPattern.test(email)) {
@@ -168,7 +168,7 @@ const SignUp = () => {
 
     const data = {
       "userType": userType,
-      // "password": password,
+      "password": password,
       // "userName": email,
       "fullName": fullname,
       "about": about,
@@ -350,7 +350,7 @@ const SignUp = () => {
                 <option value={'special_person'}>Special Person</option>
               </select>
             </div>
-            {/* <div className='text-TextColor_Neutral text-base w-full flex flex-col gap-[10px] '>
+            <div className='text-TextColor_Neutral text-base w-full flex flex-col gap-[10px] '>
               <label>Password</label>
               <div className='w-full items-center px-1 flex border focus:border-pink-400 hover:border-pink-400 rounded-lg'>
                 <input
@@ -366,9 +366,20 @@ const SignUp = () => {
                 </button>
               </div>
 
-            </div> */}
+            </div>
           </div>
+         <div className='group w-full flex flex-col gap-2 '>
+          <h3 className='text-sm text-TextColor_T200 font-normal font-poppins'>Password format </h3>
+          <div className='flex flex-col text-xs text-error'>
+              {/* <h2>  WARNING: Your password must meet the following criteria:</h2> */}
+            <h2>  - At least one uppercase letter.</h2>
+              <h2>  - At least one lowercase letter.</h2>
+              <h2>  - At least one special character {'(!@#$%^&*()_+{ }[]:;<>,.?~/-).'}</h2>
+              <h2> - Minimum length of 8 characters.</h2>
 
+
+          </div>
+         </div>
 
           <div className='justify-center flex'>
             <button onClick={userSignUp} className='bg-[#ffce00] rounded-lg px-5 font-medium font-poppins text-white text-lg '>

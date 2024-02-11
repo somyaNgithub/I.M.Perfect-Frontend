@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { FaArrowLeft } from "react-icons/fa6";
 import { IoEye, IoEyeOff } from 'react-icons/io5'
 // import { data } from 'autoprefixer'
 import { ToastContainer, toast } from 'react-toastify';
@@ -21,6 +22,23 @@ const Login = () => {
     const data = {
       "username": email,
     "password": password
+    } 
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+    if (!emailPattern.test(email)) {
+      console.log("Invalid email format");
+      toast.error('Invalid Email ', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      // Handle validation error for email (e.g., display an error message)
+      return;
     }
     await axios.post('http://3.108.227.195:8000/login/',data,{
       headers: {
@@ -85,6 +103,23 @@ const Login = () => {
       "email": email,
       "otp_code": otp
     }
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+    if (!emailPattern.test(email)) {
+      console.log("Invalid email format");
+      toast.error('Invalid Email ', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      // Handle validation error for email (e.g., display an error message)
+      return;
+    }
     await axios.post( 
       // 'http://3.108.227.195:8000/login/',
       'http://3.108.227.195:8000/otp-verify/',
@@ -105,7 +140,7 @@ const Login = () => {
           navigate('/sign-up')
         }
         else{
-          navigate('-1')
+          navigate(-1)
         }
       }
       toast.error('Login Successfull', {
@@ -140,6 +175,23 @@ const Login = () => {
   const data = {
   "email":email
   }
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+    if (!emailPattern.test(email)) {
+      // console.log("Invalid email format");
+      toast.error('Invalid Email ', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      // Handle validation error for email (e.g., display an error message)
+      return;
+    }
     await axios.post(
       // 'http://3.108.227.195:8000/login/',
       'http://3.108.227.195:8000/otp-generate/',
@@ -176,7 +228,7 @@ const Login = () => {
       }
       else {
         // navigate(-1)
-        toast.error('Username or password did not Match', {
+        toast.success('OTP send on Email ', {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -184,7 +236,7 @@ const Login = () => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "light",
+          theme: "colored",
         });
       }
 
@@ -211,9 +263,8 @@ const Login = () => {
   return (
     <div className='w-full justify-center items-center flex h-[70vh]  bg-gray-300'>
         <div className='max-w-[60vw]  mx-auto flex px-5 py-5 flex-col gap-5 justify-center items-center bg-white rounded-lg shadow-md  '>
-                    <h3 className='text-pink-400 text-2xl font-poppins font-semibold  '>Login</h3>
+                    <h3 className='text-pink-400 text-2xl font-poppins font-semibold  '>{loginWithTestUser?"Login":"Create New"}</h3>
                    <div className='w-full space-y-5'> 
-                   <h3>login with test users <span className='underline text-error' onClick={()=>setloginWithTestUser(pre=>!pre)}>click me</span> </h3>
                     <div className='text-TextColor_Neutral text-base w-full flex flex-col  gap-[10px]'>
                      <label>UserName</label>
                      <input  
@@ -246,16 +297,19 @@ const Login = () => {
               <button onClick={userLogin} className='bg-[#ffce00] rounded-lg px-5 font-medium font-poppins text-white text-lg '>
                 Login
               </button>
-
             </div>
+            <h3>If you don't have account create  <span className='underline text-error' onClick={() => setloginWithTestUser(pre => !pre)}>New</span> </h3>
                      </>:<>
-              {!getOTP ?
-               <div className='justify-center flex'>
+              {!getOTP ?<>
+               <div className='justify-center gap-5 flex'> 
+                  <div className='border w-fit p-2 rounded-full' onClick={() => setloginWithTestUser(pre => !pre)}><FaArrowLeft /></div>
                 <button onClick={GenrateOTP} className='bg-[#ffce00] rounded-lg px-5 font-medium font-poppins text-white text-lg '>
                   Get OTP
                 </button>
 
-              </div>:
+              </div>
+              
+              </>:
               <>
               <h3 className='text-lg font-normal text-TextColor_Neutral'>Enter OTP</h3>
               <OtpInput length={6} onOtpSubmit={onOtpSubmit}/>
