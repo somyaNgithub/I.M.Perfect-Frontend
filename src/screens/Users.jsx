@@ -27,7 +27,7 @@ const Users = () => {
   return ( 
     <> 
       <Header/>
-    <div className='w-[95%] flex   flex-col justify-start gap-5 md:gap-10 mx-auto  '>
+    <div className='w-[95%] flex  my-5 flex-col justify-start gap-5 md:gap-10 mx-auto  '>
    <div className='flex justify-between items-center'>
       <h3 className='text-3xl font-calligraffitti font-medium text-TextColor_Neutral'> Users</h3> 
        <select

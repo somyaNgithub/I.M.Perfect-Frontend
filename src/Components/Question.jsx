@@ -10,18 +10,18 @@ const Question = ({title, details , q_id ,publish , userName , avtar , Qus_U_id 
   return (
     <div className='w-[94%]  py-2 px-5  group  bg-white gap-5 border rounded-lg shadow-lg flex  '>
    
-      <div className='w-full flex flex-col justify-center items-start gap-1'>
+      <Link
+        to={`/question/${q_id}`} className='w-full flex flex-col justify-center items-start gap-1'>
       <div className='flex w-full justify-between gap-1'>
-          <Link
-            to={`/question/${q_id}`}
+          <h3
             className='text-xl text-TextColor_Neutral hover:text-Secondary1_Neutral text-left font-poppins font-medium line-clamp-1'>
             {
               title
             }
-          </Link>
+          </h3>
           {Qus_U_id === U_id?<div className='flex gap-2 items-center'>
-            <button onClick={()=>setEditPopup(true)} className='bg-Secondary1_Neutral ring-2 ring-Secondary1_Neutral text-white px-2 py-1 rounded-md border'>Edit</button>
-            <button onClick={()=>setDeletePopup(true)} className='bg-error text-white ring-2 ring-error px-2 py-1 rounded-md border'>Delete</button>
+            <button onClick={(e)=>{e.stopPropagation() ;e.preventDefault(); setEditPopup(true)}} className='bg-Secondary1_Neutral ring-2 ring-Secondary1_Neutral text-white px-2 py-1 rounded-md border'>Edit</button>
+            <button onClick={(e) => { e.stopPropagation(); e.preventDefault();  setDeletePopup(true)}} className='bg-error text-white ring-2 ring-error px-2 py-1 rounded-md border'>Delete</button>
           </div>:null}
       </div>
       
@@ -46,7 +46,7 @@ const Question = ({title, details , q_id ,publish , userName , avtar , Qus_U_id 
             
       </div>
 
-      </div>
+      </Link>
    
    {Qus_U_id ===U_id? <>
      <DeleteQuestion isOpen={deletePopup} closeModal={()=>setDeletePopup(false)} Q_id={q_id} key={q_id} setQuestions={setQuestion} /> 

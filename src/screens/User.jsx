@@ -35,7 +35,7 @@ const User = ({hidHeader}) => {
     <>
           {!hidHeader ? null : <Header />}
     
-    <div className='flex flex-col w-[95%] my-5 mx-auto gap-10'>
+    <div className='flex flex-col w-[95%] my-10 mx-auto gap-10'>
         {/* user hoto nd basic details */}
         <div className='w-full flex flex-col md:flex-row flex-wrap gap-5 items-start justify-center md:items-center md:justify-start'>
             <div className='w-[200px] h-[200px] flex items-center justify-center'>

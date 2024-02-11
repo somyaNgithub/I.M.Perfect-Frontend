@@ -7,7 +7,7 @@
 
 
 ::-webkit-scrollbar {
-  width: 1px;
+  width: 10px;
 }
 
 /* Track */
@@ -112,8 +112,8 @@ button:focus-visible {
   position: absolute;
   top: 50%;
   z-index: 3;
-  background-color: white;
-  margin: -20px;
+  /* background-color: white; */
+  margin: 20px;
 }
 
 .arrow.arrow-left {

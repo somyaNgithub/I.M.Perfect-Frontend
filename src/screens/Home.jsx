@@ -11,6 +11,8 @@ import Header from '../Components/Header'
 import { IoIosArrowBack ,IoIosArrowForward } from "react-icons/io";
 import 'swiper/css';
 import 'swiper/css/pagination';
+import facebook from "../assets/facebook.png";
+import instagram from "../assets/instagram.jpg";
 import { Pagination ,Autoplay ,A11y ,Navigation } from 'swiper/modules';
 import { Develoer } from '../Components/Home/Develoer';
 import home_page_banner from '../assets/home_page_banner.png'
@@ -45,11 +47,12 @@ const Home = () => {
   return (
     <> 
     <div className='w-full flex justify-center items-center bg-gray-100 bg-opacity-80'>
-        <img src={home_page_banner} alt='home banner' className='w-[320px] h-[120px]' />
+        <img src={home_page_banner} alt='home banner' className='w-[70vw] h-[200px] md:h-[30vh]' />
     </div>
     <Header/>
-    < div className='space-y-12'
+    < div className='space-y-12 mb-10'
     >
+        <a className='fixed bottom-[10%] left-10 rounded-full z-[-1]'><img src={facebook} alt='' className='h-10 w-10 rounded-full'  /></a>
 <div className='relative  mx-5  '>
    
       <Swiper 
@@ -57,7 +60,7 @@ const Home = () => {
       allowSlidePrev={true}
       // thumbs={true}
       navigation={{nextEl:".arrow-left", prevEl: ".arrow-right"}}
-        autoplay={{ delay: 4000 }} 
+        // autoplay={{ delay: 4000 }} 
       pagination={true} modules={[Pagination ,Autoplay , A11y ,Navigation ]} className="mySwiper max-h-[450px]">
       
         <SwiperSlide key={1}>
@@ -96,8 +99,8 @@ const Home = () => {
           </SwiperSlide>
      
       </Swiper> 
-       <button className=" arrow-right arrow border-2 p-2 max-md:hidden rounded-full "><IoIosArrowForward size={25}/></button>
-        <button className="arrow-left arrow border-2 p-2 max-md:hidden rounded-full "><IoIosArrowBack size={25}/></button>
+       <button className=" arrow-right arrow text-white p-2 max-md:hidden rounded-full "><IoIosArrowForward size={25}/></button>
+          <button className="arrow-left arrow text-white p-2 max-md:hidden rounded-full "><IoIosArrowBack size={25}/></button>
     </div>
 
     
@@ -216,6 +219,7 @@ const Home = () => {
     </div>
     <Develoer/>
     </div>
+     
 </>
   )
 }

@@ -12,7 +12,7 @@ import { SlArrowLeft } from 'react-icons/sl'
 import { MdOutlineCancel } from 'react-icons/md'
 const SignUp = () => {
   const navigate = useNavigate()
-  const [email, setEmail] = useState(null)
+  const [email, setEmail] = useState(JSON.parse(localStorage.getItem('user'))?.userName)
   const [password, setPassword] = useState(null)
   const [passwordIsVisual, setPasswordIsVisual] = useState(false)
   const [fullname, setFullName] = useState('');
@@ -100,7 +100,7 @@ const SignUp = () => {
   };
 
   async function userSignUp() {
-    if (!email || !password || !fullname || !age || !gender || !address || !mobileNo) {
+    if (!flieAttached|| !fullname || !age || !gender || !address || !mobileNo) {
       console.log("All fields are required");
       toast.error('All fields are required', {
         position: "top-right",
@@ -131,45 +131,45 @@ const SignUp = () => {
       // Handle validation error (e.g., display an error message)
       return;
     }
-    const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8}$/;
+    // const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8}$/;
 
-    if (!passwordPattern.test(password)) {
-      console.log("Invalid password format");
-      toast.error('Invalid password format', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      // Handle validation error for password (e.g., display an error message)
-      return;
-    }
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    // if (!passwordPattern.test(password)) {
+    //   console.log("Invalid password format");
+    //   toast.error('Invalid password format', {
+    //     position: "top-right",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //   });
+    //   // Handle validation error for password (e.g., display an error message)
+    //   return;
+    // }
+    // const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    if (!emailPattern.test(email)) {
-      console.log("Invalid email format");
-      toast.error('Invalid email format', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      // Handle validation error for email (e.g., display an error message)
-      return;
-    }
+    // if (!emailPattern.test(email)) {
+    //   console.log("Invalid email format");
+    //   toast.error('Invalid email format', {
+    //     position: "top-right",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //   });
+    //   // Handle validation error for email (e.g., display an error message)
+    //   return;
+    // }
 
     const data = {
       "userType": userType,
-      "password": password,
-      "userName": email,
+      // "password": password,
+      // "userName": email,
       "fullName": fullname,
       "about": about,
       "age": age,
@@ -179,58 +179,29 @@ const SignUp = () => {
       "country": country,
       "avatar": flieAttached
     }
-    await axios.post('http://3.108.227.195:8000/signup/', data, {
+    const token = localStorage.getItem('Token')
+    await axios.patch('http://3.108.227.195:8000/user-update/', data, {
       headers: {
         "Content-Type": "application/json",
-        // "token": token
+        "Authorization": token
       }
     }).then((res) => {
       // console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
       // const questionArray = res?.data 
       // setQuestions(questionArray)
-      toast.success('Account Created  successfully', {
-        position: "top-right",
+      localStorage.setItem("user", JSON?.stringify(res?.data))
+      toast.success('Account Updated  successfully', {
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: "colored",
       });
-      setTimeout(() => { navigate(-1) }, 5000)
+      setTimeout(() => { navigate('/') }, 5000)
 
-      if (res?.data?.U_id) {
-        // setOrder_no(res?.data?.data)
-
-        console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
-        console.log(res?.data?.api_status, "result")
-        toast.success('Account Created  successfully', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-        setTimeout(() => { navigate(-1) }, 5000)
-
-      }
-      else {
-        // navigate(-1)
-        // toast.error('Username or password did not Match', {
-        //   position: "top-right",
-        //   autoClose: 5000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        //   theme: "light",
-        // });
-      }
 
     })
       .catch((err) => {
@@ -248,9 +219,9 @@ const SignUp = () => {
       })
   }
   return (
-    <div className='w-full max-sm:max-w-[420px] justify-center items-center flex py-3 md:py-5  bg-pink-100'>
+    <div className='w-full max-sm:max-w-[420px] justify-center items-center flex py-3 md:py-5  bg-gray-300'>
       <div className=' mx-auto flex px-5 py-5 flex-col gap-5 justify-center items-center bg-white rounded-lg shadow-md  '>
-        <h3 className='text-pink-400 text-2xl font-poppins font-semibold  '>SignUp</h3>
+        <h3 className='text-pink-400 text-2xl font-poppins font-semibold  '>Update Your Profile</h3>
         <div className='px-5 my-5 flex flex-col-reverse gap-2 bg-white rounded-lg font-poppins py-3 items-center  border-border_Neutral justify-between  '>
 
           <label htmlFor='attachFile' className='cursor-pointer rounded-md bg-pink-200 px-2 py-1'>Upload Profile Photo</label>
@@ -281,7 +252,8 @@ const SignUp = () => {
               <input
                 type={"text"}
                 value={email}
-                onChange={(e) => setEmail(e?.target?.value)}
+                disabled
+                // onChange={(e) => setEmail(e?.target?.value)}
                 placeholder='Enter Email'
                 className='focus:outline-none rounded-lg focus:border-pink-400 border-2 px-5 py-2'
 
@@ -378,7 +350,7 @@ const SignUp = () => {
                 <option value={'special_person'}>Special Person</option>
               </select>
             </div>
-            <div className='text-TextColor_Neutral text-base w-full flex flex-col gap-[10px] '>
+            {/* <div className='text-TextColor_Neutral text-base w-full flex flex-col gap-[10px] '>
               <label>Password</label>
               <div className='w-full items-center px-1 flex border focus:border-pink-400 hover:border-pink-400 rounded-lg'>
                 <input
@@ -394,13 +366,13 @@ const SignUp = () => {
                 </button>
               </div>
 
-            </div>
+            </div> */}
           </div>
 
 
           <div className='justify-center flex'>
             <button onClick={userSignUp} className='bg-[#ffce00] rounded-lg px-5 font-medium font-poppins text-white text-lg '>
-              SignUp
+              Update Profile 
             </button>
 
           </div>
