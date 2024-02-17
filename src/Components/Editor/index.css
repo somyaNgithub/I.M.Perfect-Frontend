@@ -4,11 +4,11 @@
     margin: 0 auto;
     -webkit-transition: background-color .15s ease;
     transition: background-color .15s ease;
-    gap: 8px;
+    gap: 0px;
 }
 .ce-header{
-    color: #525fe1;
-    font-size: xx-large;    
+    color: #54063a;
+    font-size: xx-large; 
 }
 .ce-paragraph{
     /* font-size: 20px; */

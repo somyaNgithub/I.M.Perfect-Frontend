@@ -15,7 +15,7 @@ import facebook from "../assets/facebook.png";
 import instagram from "../assets/instagram.jpg";
 import { Pagination ,Autoplay ,A11y ,Navigation } from 'swiper/modules';
 import { Develoer } from '../Components/Home/Develoer';
-import home_page_banner from '../assets/home_page_banner.png'
+// import home_page_banner from '../assets/home_page_banner.png'
 const Home = () => {
   const [questions, setQuestions] = useState([])
   async function getQuestions(){
@@ -46,14 +46,14 @@ const Home = () => {
   },[])
   return (
     <> 
-    <div className='w-full flex justify-center items-center bg-gray-100 bg-opacity-80'>
+    {/* <div className='w-full flex justify-center items-center bg-gray-100 bg-opacity-80'>
         <img src={home_page_banner} alt='home banner' className='w-[70vw] h-[200px] md:h-[30vh]' />
-    </div>
+    </div> */}
     <Header/>
-    < div className='space-y-12 mb-10'
+    < div className='space-y-10 mb-10'
     >
-        <a className='fixed bottom-[10%] left-10 rounded-full z-[-1]'><img src={facebook} alt='' className='h-10 w-10 rounded-full'  /></a>
-<div className='relative  mx-5  '>
+        {/* <a className='fixed bottom-[10%] left-10 rounded-full z-[-1]'><img src={facebook} alt='' className='h-10 w-10 rounded-full'  /></a> */}
+<div className='relative   '>
    
       <Swiper 
       allowSlideNext={true}
@@ -75,7 +75,7 @@ const Home = () => {
              Join Imperfect community to connect with parents of special children. In our supportive community, we celebrate uniqueness, share experiences, and find strength together. Your journey matters here
 
         </h5> 
-              <Link to={'/ask-question'} className='px-3 py-2 font-poppins font-semibold text-center text-white text-lg bg-Secondary1_Neutral rounded-lg'>
+              <Link to={'/ask-question'} className='px-3 py-2 font-poppins font-semibold text-center  text-lg hover:bg-Original bg-white bg-opacity-30 hover:text-white text-Original border border-Original rounded-lg'>
             Ask a question 
         </Link>
     </div>
@@ -92,7 +92,9 @@ const Home = () => {
                 Join Imperfect community to connect with parents of special children. In our supportive community, we celebrate uniqueness, share experiences, and find strength together. Your journey matters here
 
               </h5>
-              <Link to={'/ask-question'} className='px-3 py-2 font-poppins font-semibold text-center text-white text-lg bg-Secondary1_Neutral rounded-lg'>
+              <Link to={'/ask-question'} 
+             className="px-3 py-2 font-poppins font-semibold text-center  text-lg hover:bg-Original bg-white bg-opacity-30 hover:text-white text-Original border border-Original rounded-lg" 
+              >
                 Ask a question
               </Link>
             </div>
@@ -106,7 +108,7 @@ const Home = () => {
     
     {/* our vision */}
     <div className='flex flex-col w-[95%] mx-auto justify-center items-center  gap-10  '>
-                      <h3 className='text-Secondary1_Neutral text-lg md:text-[36px] font-poppins font-medium text-center'>
+                      <h3 className=' text-lg md:text-[36px] font-poppins font-medium text-center'>
                         <HeadingTags title={"Our Vision"}/>
                       </h3>
                       <div className='w-full flex flex-col gap-5'>

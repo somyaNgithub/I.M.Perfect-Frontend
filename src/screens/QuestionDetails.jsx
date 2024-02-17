@@ -6,9 +6,12 @@ import { formatDateTime } from '../utils/dateFormater'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from '../Components/Header'
-
+import {DeleteAnswer} from '../Components/Popup/DeleteAnswer'
 const QuestionDetails = () => {
     const {id} = useParams()
+    const [deleteAnswer,setDeleteAnswer] = useState(false)
+    const [A_id,setA_id]= useState('')
+    const user_id = JSON.parse(localStorage.getItem('user'))?.U_id
     const [selectedQuestion, setSelectedQuestion] = useState('');
     const [answer, setAnswer] = useState('')
     const [answerArray,setAnswerArray] = useState([])
@@ -120,7 +123,7 @@ async function writeanswer(){
         <Link to={'/ask-question'} className='border-2 border-Secondary1_Neutral ring-2 bg-Secondary1_s50 rounded-lg px-2 py-1 text-center text-lg '>AskQuestion</Link>
           </div>
           {selectedQuestion?.Q_id ? <EditorReadOnly id={selectedQuestion?.Q_id}
-           data={selectedQuestion?.description??'{"name":"12",}'} 
+           data={selectedQuestion?.description??null} 
            key={'21'}
            />:null}
          
@@ -135,7 +138,15 @@ async function writeanswer(){
               <div className='w-full flex flex-col gap-3'>
                 <h3 className='text-lg font-poppins font-medium text-TextColor_T200'>total aanswers {answerArray?.count_of_anser??0}</h3>
                   {answerArray?.data?.map((ans)=>{ return (<div key={ans?.A_id} className='border-2 rounded-lg text-xl font-poppins text-TextColor_Neutral gap-2'>
-                  <h3 className='px-5 py-3'>{ans?.Answer}</h3>
+                    <div className='flex w-full justify-between flex-wrap'>
+                      <h3 className='px-5 py-3'>{ans?.Answer}</h3>
+                      {ans?.U_id === user_id ?<>  
+                      <div className='flex gap-2 items-center'>
+
+                        <button className='bg-error px-2 py-1 rounded-lg text-white' onClick={()=>{setDeleteAnswer(true);setA_id(ans?.A_id)}}>delete</button>
+                        </div> </>:null}
+                     
+                  </div>
                   <div className='flex justify-between px-5 py-3 items-center text-TextColor_Neutral bg-Secondary1_s50 '>
                     <h3 className='capitalize'>created at {ans?.pub_date?formatDateTime(ans?.pub_date):null} </h3> 
                     <div className='justify-center flex  gap-2 items-center'>
@@ -180,9 +191,9 @@ draggable
 pauseOnHover
 theme="light"
 />
-              {console?.log(selectedQuestion ,"44444444444444444444444",answerArray)}
+              {/* {console?.log(selectedQuestion ,"44444444444444444444444",answerArray)} */}
     </div>
-    
+      <DeleteAnswer A_id={A_id} closeModal={() => setDeleteAnswer(false)} isOpen={deleteAnswer} setQuestions={getAnswersForQuestion}/>
     </>
   )
 }

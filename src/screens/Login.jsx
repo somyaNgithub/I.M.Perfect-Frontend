@@ -18,7 +18,20 @@ const Login = () => {
   const handlePassword =()=>{
     setPasswordIsVisual(pre => !pre)
   }
-  async function userLogin () {
+  async function userLogin () { 
+     if(!email || !password){
+       toast.error("Please Enter Your email and Password", {
+         position: "top-center",
+         autoClose: 5000,
+         hideProgressBar: false,
+         closeOnClick: true,
+         pauseOnHover: true,
+         draggable: true,
+         progress: undefined,
+         theme: "colored",
+       }) 
+       return 
+     }
     const data = {
       "username": email,
     "password": password
@@ -58,14 +71,14 @@ const Login = () => {
         // console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
         // console.log(res?.data?.api_status,"result")
           toast.success('Login successfully', {
-            position: "top-right",
+            position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: "colored",
             });
             setTimeout(()=>{navigate(-1)},5000)
             
@@ -271,7 +284,7 @@ const Login = () => {
                      type='email'
                      value={email}
                      onChange={e=>setEmail(e.target.value)}
-                     className='focus:outline-none rounded-lg focus:border-pink-400 border-2 px-5 py-2'
+                     className='focus:outline-none rounded-lg w-full focus:border-pink-400 border-2 px-5 py-2'
                      placeholder='Enter  your email'
                      />
                     </div>
@@ -283,7 +296,7 @@ const Login = () => {
                   type={passwordIsVisual ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e?.target?.value)}
-                  className='focus:outline-none    px-5 py-2'
+                  className='focus:outline-none w-full   px-5 py-2'
                   placeholder='Enter Password'
                 />
                 <button onClick={handlePassword}>
@@ -291,10 +304,10 @@ const Login = () => {
                   }
                 </button>
               </div>
-
+              <Link to={'/forget-password'}>Forget Password ?  </Link>
             </div>
             <div className='justify-center flex'>
-              <button onClick={userLogin} className='bg-[#ffce00] rounded-lg px-5 font-medium font-poppins text-white text-lg '>
+              <button onClick={userLogin} className='bg-pink-300 rounded-lg px-5 font-medium font-poppins text-white text-lg '>
                 Login
               </button>
             </div>
@@ -303,24 +316,20 @@ const Login = () => {
               {!getOTP ?<>
                <div className='justify-center gap-5 flex'> 
                   <div className='border w-fit p-2 rounded-full' onClick={() => setloginWithTestUser(pre => !pre)}><FaArrowLeft /></div>
-                <button onClick={GenrateOTP} className='bg-[#ffce00] rounded-lg px-5 font-medium font-poppins text-white text-lg '>
+                <button onClick={GenrateOTP} className='border border-pink-500 text-pink-400 rounded-lg px-5 font-medium font-poppins  text-lg '>
                   Get OTP
                 </button>
-
               </div>
-              
               </>:
               <>
               <h3 className='text-lg font-normal text-TextColor_Neutral'>Enter OTP</h3>
               <OtpInput length={6} onOtpSubmit={onOtpSubmit}/>
                   <div className='justify-center flex'>
-                    <button onClick={verifyOTP} className='bg-[#ffce00] rounded-lg px-5 font-medium font-poppins text-white text-lg '>
+                    <button onClick={verifyOTP} className='border border-pink-400 rounded-lg px-5 font-medium font-poppins text-pink-400 text-lg '>
                       Verify OTP
                     </button>
-
                   </div>
               </>}
-            
                      </>}
                      
                     

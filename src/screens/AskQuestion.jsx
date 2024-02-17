@@ -19,7 +19,20 @@ const AskQuestion = () => {
         return { ...prv, [key]: !prv[key] };
       } )
     }
-   const createQuestion = async ()=>{
+   const createQuestion = async ()=>{ 
+    if(!title|| !detail){
+      toast.error('both Fields are Required', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return
+    }
     const data = {
       "title": title,
      "description": detail
@@ -35,17 +48,18 @@ const AskQuestion = () => {
         console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
         const questionArray = res?.data 
         // setQuestions(questionArray)
+      
         if (res?.data) {
           // setOrder_no(res?.data?.data)
           toast.success('Question created successfully', {
-            position: "top-right",
+            position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: "colored",
             });
             setDetail("");
             setTitle("");
@@ -53,7 +67,8 @@ const AskQuestion = () => {
               detailget:false})
           console.log(res, '-----------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_______________________________________________')
           console.log(res?.data?.api_status,"result")
-          navigate(-1)
+          setTimeout(() => { navigate(-1) },3000)
+         
         }
         else {
           // navigate(-1)
@@ -74,8 +89,8 @@ const AskQuestion = () => {
   return (
     <>
     <Header/>
-    <div className='w-[90%]  mx-auto justify-start items-start flex flex-col gap-10'>
-      <h3 className='text-5xl font-poppins font-bold text-TextColor_T500'>Ask A public Question</h3>
+    <div className='w-[90%]  mx-auto justify-start items-start flex flex-col my-10 gap-10'>
+        <h3 className='text-3xl font-calligraffitti font-bold text-TextColor_Neutral'>Ask A public Question</h3>
       <div className='bg-pink-100 w-full rounded-xl flex flex-col px-5 py-5 gap-5'>
         <h3 className='font-semibold font-poppins text-2xl text-TextColor_Neutral'>Writing a good question</h3>
         <h4 className='text-base font-poppins font-medium'>You’re ready to ask a programming-related question and this form will help guide you through the process.
@@ -97,10 +112,7 @@ Looking to ask a non-programming question? See the topics here to find a relevan
        className='border-2 border-border_Neutral px-5 py-2  rounded-xl text-base font-poppins font-medium hover:border-pink-500 focus:outline-pink-500'
        placeholder='exp . Is there any special goverment project run for special childs ?'
        />
-       {title?.length>20?
-       <button 
-       onClick={()=>handleStage("title")}
-        className='self-start px-3 py-1 text-center font-poppins font-medium'>confirm</button>:null}
+     
       </div>
 
       <div className='bg-white border-2 rounded-xl flex flex-col gap-2 w-full p-5 '
@@ -118,19 +130,14 @@ Introduce the problem and expand on what you put in the title. Minimum 20 charac
        placeholder='exp . Is there any special goverment project run for special childs ?'
        /> */}
        {/* <EditorReadOnly data={detail} id='read'  /> */}
-        <Editor  data='{"mdohit":"32"}' setJSONData={setDetail} id={"editor"} />
-       {detail?.length>20?
-       <button 
-       
-       onClick={()=>handleStage("detailget")}
-       className='self-start px-3 py-1 text-center font-poppins font-medium'>confirm</button>:null}
+        <Editor  data='{}' setJSONData={setDetail} id={"editor"} />
       </div>
      
       <button
       className='px-3 py-2 bg-pink-400 rounded-lg text-lg font-poppins font-medium text-white'
       // disabled={stage?.detailget || stage?.title}
       onClick={()=>createQuestion()}
-      >Creat A question</button>
+        >Create a Question</button>
     <ToastContainer
 position="top-right"
 autoClose={5000}

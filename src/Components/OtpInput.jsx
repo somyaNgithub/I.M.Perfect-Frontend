@@ -63,7 +63,7 @@ const OtpInput = ({length = 4, onOtpSubmit = () => {}}) => {
             onChange={(e) => handleChange(index, e)}
             onClick={() => handleClick(index)}
             onKeyDown={(e) => handleKeyDown(index, e)}
-            className="sm:h-[52px] h-[50px] w-full rounded-lg border border-text_disable text-center "
+            className="sm:h-[52px] h-[50px] w-full rounded-lg border border-text_disable focus:outline-pink-400 text-center "
           />
         );
       })}

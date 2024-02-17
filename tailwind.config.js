@@ -14,6 +14,17 @@ export default {
        
       },
       colors:{
+        
+   Shade_1: "#0e0000",
+    Shade_2: "#180100",
+    Shade_3: "#220205",
+    Shade_4: "#2c0310",
+    Shade_5: "#36041a",
+    Shade_6: "#400525",
+    Shade_7: "#4a052f",
+    Original: "#54063a",
+
+
             //Primary
             Primary_p50:"#ffefe6",
             Primary_p75:"#ffbe96",

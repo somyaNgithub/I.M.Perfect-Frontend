@@ -33,15 +33,15 @@ export { Develoer}
 
 const Dev = ({ name , img , role , linkdin , github  }) =>{
          return (
-            <div className='w-[360px] flex flex-col min-h-[240px] max-md:mt-[100px] relative rounded-lg shadow-lg bg-pink-300 items-center'>
+            <div className='w-[360px] flex flex-col min-h-[240px] max-md:mt-[100px] relative rounded-lg shadow-lg bg-opacity-70 bg-Original hover:bg-opacity-100  items-center'>
                 <div className='w-[200px] h-[200px] absolute top-[-100px] rounded-full flex mx-auto items-center justify-center'>
                     <img src={img} alt='name' className='object-cover rounded-full w-full h-full'/>
                 </div>
                 <div className='flex flex-col gap-2 absolute bottom-3 w-full items-center justify-center'>
-                      <h3 className='text-2xl font-calligraffitti font-bold text-TextColor_Neutral '>{name}</h3>
-                 <h4 className='text-xl font-poppins font-medium text-TextColor_T200 '> Role : {role}</h4>
+                      <h3 className='text-2xl font-calligraffitti font-bold text-white '>{name}</h3>
+                 <h4 className='text-xl font-poppins font-medium text-slate-200 '> Role : {role}</h4>
                 <div className='flex gap-5 mx-auto items-center'>
-                 <a target='_blank' rel="noreferrer" href={linkdin} > < FaLinkedin  size={25}/> </a> 
+                 <a target='_blank' rel="noreferrer" href={linkdin} > < FaLinkedin  size={25} className='text-slate-200'/> </a> 
                   <a target='_blank' rel="noreferrer" href={github} > < FaGithub size={25}/> </a> 
              
                 </div>

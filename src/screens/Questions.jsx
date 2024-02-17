@@ -59,7 +59,7 @@ const QuestionPage = () => {
         <Header/>
         <div className='w-[95%] flex  my-5 flex-col justify-start gap-5 md:gap-10 mx-auto  '>
             <div className='flex justify-between items-center'>
-                <h3 className='text-3xl font-calligraffitti font-medium text-TextColor_Neutral'>All Questions</h3>
+                <h3 className='text-3xl font-calligraffitti font-bold text-TextColor_Neutral'>All Questions</h3>
                 <div className=' flex flex-row items-center px-2 py-1 border border-[#575757] rounded-lg'>
                     <input
                         className='border-none focus:outline-none text-lg placeholder:text-sm w-full placeholder:text-[#DCDCDC]  '
@@ -71,6 +71,8 @@ const QuestionPage = () => {
                     <button className='pl-2'><GoSearch size={20} color="#3C0008" /> </button>
                 </div>
             </div>
+                <Link to={'/ask-question'} className='border-2 border-Secondary1_Neutral ring-2 bg-Secondary1_s50 rounded-lg px-2 py-1 text-center text-lg w-fit '>AskQuestion</Link>
+
             <div className="flex flex-wrap  justify-start gap-10 items-center w-full ">
                 
                 {filteredAstrologerByName ? <>   {filteredAstrologerByName?.map((question) => (
