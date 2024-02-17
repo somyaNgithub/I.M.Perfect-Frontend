@@ -6,7 +6,7 @@ import { UserProfilePopup } from './Popup/UserProfilePopup';
 import Logout from './Popup/Logout';
 import HeadingTags from './Ribbon/HeadingTags'
 import { IoHomeOutline } from "react-icons/io5";
-import Logo from '../assets/imlogo.jpeg'
+import Logo from '../assets/imLogo.jpeg'
 const Header = () => {
     const navigate = useNavigate()
     const [UserPoupOpen,setUserPoupOpen]= useState(false)
