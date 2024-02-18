@@ -10,6 +10,7 @@ import { Editor } from '../Components/Editor';
 import { FaRegCircleUser } from "react-icons/fa6";
 import { SlArrowLeft } from 'react-icons/sl'
 import { MdOutlineCancel } from 'react-icons/md'
+import avatar from "../assets/avatar.png"
 const SignUp = () => {
   const navigate = useNavigate()
   const [email, setEmail] = useState(JSON.parse(localStorage.getItem('user'))?.userName)
@@ -221,7 +222,7 @@ const SignUp = () => {
   return (
     <div className='w-full max-sm:max-w-[420px] justify-center items-center flex py-3 md:py-5  bg-gray-300'>
       <div className=' mx-auto flex px-5 py-5 flex-col gap-5 justify-center items-center bg-white rounded-lg shadow-md  '>
-        <h3 className='text-pink-400 text-2xl font-poppins font-semibold  '>Update Your Profile</h3>
+        <h3 className='text-Original text-2xl font-poppins font-semibold  '>Update Your Profile</h3>
         <div className='px-5 my-5 flex flex-col-reverse gap-2 bg-white rounded-lg font-poppins py-3 items-center  border-border_Neutral justify-between  '>
 
           <label htmlFor='attachFile' className='cursor-pointer rounded-md bg-pink-200 px-2 py-1'>Upload Profile Photo</label>
@@ -231,7 +232,7 @@ const SignUp = () => {
             onChange={getImageSizeInKB}
             placeholder='Select a file or drag and drop here'
             className='w-full hidden border rounded-lg' />
-          {imageSizeKB ? <><div className='relative py-1 pt-2 pr-2 text-error'><div><img src={flieAttached} className='w-20 h-20 rounded-md' /></div> <button onClick={() => removeFile()} className='absolute top-0 right-0'><MdOutlineCancel className='w-5 h-5 rounded-full' /></button> </div></> : <FaRegCircleUser size={80} />}
+          {imageSizeKB ? <><div className='relative py-1 pt-2 pr-2 text-error'><div><img src={flieAttached} className='w-20 h-20 rounded-md' /></div> <button onClick={() => removeFile()} className='absolute top-0 right-0'><MdOutlineCancel className='w-5 h-5 rounded-full' /></button> </div></> : <img src={avatar} className='w-20 h-20 rounded-full' /> }
 
         </div>
         <div className='w-full space-y-5'>
@@ -242,8 +243,8 @@ const SignUp = () => {
                 type='text'
                 value={fullname}
                 onChange={e => setFullName(e.target.value)}
-                className='focus:outline-none rounded-lg focus:border-pink-400 border-2 px-5 py-2'
-                placeholder='Enter  your email'
+                className='focus:outline-none border-Original rounded-lg focus:border-pink-400 border px-5 py-2'
+                placeholder='Enter  your Name'
               />
             </div>
             <div className='text-TextColor_Neutral text-base w-full flex flex-col gap-[10px] '>
@@ -255,7 +256,7 @@ const SignUp = () => {
                 disabled
                 // onChange={(e) => setEmail(e?.target?.value)}
                 placeholder='Enter Email'
-                className='focus:outline-none rounded-lg focus:border-pink-400 border-2 px-5 py-2'
+                className='focus:outline-none border-Original rounded-lg focus:border-Original border px-5 py-2'
 
               />
 
@@ -269,8 +270,8 @@ const SignUp = () => {
               <select
                 value={gender}
                 onChange={e => setGender(e.target.value)}
-                className='focus:outline-none rounded-lg focus:border-pink-400 border-2 px-5 py-2'
-                placeholder='Enter  your email'
+                className='focus:outline-none border-Original rounded-lg focus:border-pink-400 border px-5 py-2'
+               
               >
                 <option value={'Male'}>Male</option>
                 <option value={'FeMale'}>FeMale</option>
@@ -282,7 +283,7 @@ const SignUp = () => {
                 type='number'
                 value={age}
                 onChange={e => setAge(e.target.value)}
-                className='focus:outline-none rounded-lg focus:border-pink-400 border-2 px-5 py-2'
+                className='focus:outline-none rounded-lg border-Original focus:border-pink-400 border px-5 py-2'
                 placeholder='Enter  your Age'
               />
 
@@ -294,8 +295,8 @@ const SignUp = () => {
               <select
                 value={country}
                 onChange={e => setCountry(e.target.value)}
-                className='focus:outline-none rounded-lg focus:border-pink-400 border-2 px-5 py-2'
-                placeholder='Enter  your email'
+                className='focus:outline-none border-Original rounded-lg focus:border-pink-400 border px-5 py-2'
+              
               >
                 <option value={'India'}>India</option>
                 <option value={'U.S.A'}>USA</option>
@@ -304,11 +305,11 @@ const SignUp = () => {
             <div className='text-TextColor_Neutral text-base w-full flex flex-col gap-[10px] '>
               <label>Mobile Number</label>
               <input
-                type='text'
+                type='number'
                 value={mobileNo}
                 minLength={10}
                 onChange={e => setMobileNo(e.target.value)}
-                className='focus:outline-none rounded-lg focus:border-pink-400 border-2 px-5 py-2'
+                className='focus:outline-none rounded-lg focus:border-pink-400 border-Original border px-5 py-2'
                 placeholder='Enter  your Moblie Number'
               />
 
@@ -318,7 +319,7 @@ const SignUp = () => {
           <textarea value={address}
             onChange={(e) => setAddress(e.target.value)}
             rows={4}
-            className='w-full px-3  py-2 border-2 border-text_disable rounded-lg' />
+            className='w-full px-3  py-2 border border-Original rounded-lg' />
 
 
           <h3 className='text-lg font-poppins font-normal'>Bio</h3>
@@ -342,7 +343,7 @@ const SignUp = () => {
               <select
                 value={userType}
                 onChange={e => setUserType(e.target.value)}
-                className='focus:outline-none rounded-lg focus:border-pink-400 border-2 px-5 py-2'
+                className='focus:outline-none rounded-lg focus:border-pink-400 border-Original border px-5 py-2'
               
               >
                 <option value={'expert'}>Expert</option>
@@ -352,7 +353,7 @@ const SignUp = () => {
             </div>
             <div className='text-TextColor_Neutral text-base w-full flex flex-col gap-[10px] '>
               <label>Password</label>
-              <div className='w-full items-center px-1 flex border focus:border-pink-400 hover:border-pink-400 rounded-lg'>
+              <div className='w-full items-center px-1 flex border focus:border-pink-400 hover:border-pink-400 border-Original rounded-lg'>
                 <input
                   type={"text"}
                   value={password}
@@ -382,7 +383,7 @@ const SignUp = () => {
          </div>
 
           <div className='justify-center flex'>
-            <button onClick={userSignUp} className='bg-[#ffce00] rounded-lg px-5 font-medium font-poppins text-white text-lg '>
+            <button onClick={userSignUp} className='hover:bg-Original bg-white text-Original hover:text-white w-full rounded-lg px-5 font-medium font-poppins border border-Original text-lg '>
               Update Profile 
             </button>
 

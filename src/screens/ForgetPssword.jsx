@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate } from 'react-router-dom';
 import OtpInput from '../Components/OtpInput'
+import Header from '../Components/Header';
 const ForgetPassword = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState(null)
@@ -284,7 +285,8 @@ const ForgetPassword = () => {
     //     setOtp(otp)
     //     console.log("Login Successful @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", otp);
     // };
-    return (
+    return (<> 
+    <Header hid={true}/>
         <div className='w-full justify-center items-center flex h-[70vh]  bg-gray-300'>
             <div className='max-w-[550px] w-full  mx-auto flex px-5 py-5 flex-col gap-5 justify-center items-start bg-white rounded-lg shadow-md  '>
                 <h3 className='text-Original text-2xl font-poppins font-semibold  '>Forget Password</h3>
@@ -327,6 +329,7 @@ const ForgetPassword = () => {
                 theme="light"
             />
         </div>
+        </>
     )
 }
 
