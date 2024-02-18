@@ -275,8 +275,8 @@ const Login = () => {
   };
   return (
     <div className='w-full justify-center items-center flex h-[70vh]  bg-gray-300'>
-        <div className='max-w-[60vw]  mx-auto flex px-5 py-5 flex-col gap-5 justify-center items-center bg-white rounded-lg shadow-md  '>
-                    <h3 className='text-pink-400 text-2xl font-poppins font-semibold  '>{loginWithTestUser?"Login":"Create New"}</h3>
+        <div className='max-w-[550px]  mx-auto flex w-full px-5 py-5 flex-col gap-5 justify-center items-center bg-white rounded-lg shadow-md  '>
+                    <h3 className='text-Original text-2xl font-poppins font-semibold  '>{loginWithTestUser?"Login":"Create New"}</h3>
                    <div className='w-full space-y-5'> 
                     <div className='text-TextColor_Neutral text-base w-full flex flex-col  gap-[10px]'>
                      <label>UserName</label>
@@ -304,19 +304,19 @@ const Login = () => {
                   }
                 </button>
               </div>
-              <Link to={'/forget-password'}>Forget Password ?  </Link>
+              <Link to={'/forget-password'} className='underline text-Secondary1_Neutral'>Forget Password ?  </Link>
             </div>
             <div className='justify-center flex'>
-              <button onClick={userLogin} className='bg-pink-300 rounded-lg px-5 font-medium font-poppins text-white text-lg '>
+              <button onClick={userLogin} className='border-Original text-Original hover:bg-Original hover:text-white border rounded-lg px-5 font-medium font-poppins  text-lg '>
                 Login
               </button>
             </div>
-            <h3>If you don't have account create  <span className='underline text-error' onClick={() => setloginWithTestUser(pre => !pre)}>New</span> </h3>
+            <h3>If you don't have account create  <span className='underline text-error  cursor-pointer' onClick={() => setloginWithTestUser(pre => !pre)}>New account</span> </h3>
                      </>:<>
               {!getOTP ?<>
-               <div className='justify-center gap-5 flex'> 
-                  <div className='border w-fit p-2 rounded-full' onClick={() => setloginWithTestUser(pre => !pre)}><FaArrowLeft /></div>
-                <button onClick={GenrateOTP} className='border border-pink-500 text-pink-400 rounded-lg px-5 font-medium font-poppins  text-lg '>
+               <div className=' justify-between gap-5 flex'> 
+                  <div className=' w-fit p-2 rounded-full' onClick={() => setloginWithTestUser(pre => !pre)}><FaArrowLeft /></div>
+                <button onClick={GenrateOTP} className='border justify-self-center border-Original text-Original hover:bg-Original hover:text-white rounded-lg px-5 font-medium font-poppins  text-lg '>
                   Get OTP
                 </button>
               </div>
