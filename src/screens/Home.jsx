@@ -15,6 +15,7 @@ import facebook from "../assets/facebook.png";
 import instagram from "../assets/instagram.jpg";
 import { Pagination ,Autoplay ,A11y ,Navigation } from 'swiper/modules';
 import { Develoer } from '../Components/Home/Develoer';
+import { Footer } from '../Components/Footer';
 // import home_page_banner from '../assets/home_page_banner.png'
 const Home = () => {
   const [questions, setQuestions] = useState([])
@@ -113,82 +114,21 @@ const Home = () => {
                       </h3>
                       <div className='w-full flex flex-col gap-5'>
                       <p
-                      className='w-full mx-5 flex  justify-center  items-center font-poppins text-center font-normal text-xl '
+                      className='w-full mx-5   justify-center  items-center font-poppins text-center font-normal text-xl '
                       >
-                        Our vision for the Imperfect Community Plan stems from a profound belief in inclusivity and the collective strength that emerges from embracing diversity. We aspire to create a haven where special children and their parents feel not just accepted, but truly valued for their unique qualities. In our Imperfect Community, we aim to foster an environment that recognizes the individuality of every child and supports their journey towards a fulfilling life.
+            <span className='font-bold'>  Building Bridges of Understanding:</span>
+              We understand that the journey of raising a special child comes with its unique challenges and triumphs. Our mission is to build bridges of understanding within the community, connecting parents who seek guidance, experts who offer insights, and individuals who have a wealth of experience to share.
                       </p>
-                      <ul className='list-decimal font-poppins text-lg'>
-                           <li className='ml-5 font-poppins font-medium  text-TextColor_Neutral text-xl'> Empowerment through Education:
-                            <ul className='list-disc ml-5 text-TextColor_T200 text-base'>
-                                 <li>
-                                 We envision a community where educational institutions are equipped to cater to the diverse needs of special children.
-                                 </li>
-                                 <li>
-                                 Implementing inclusive teaching methodologies and personalized learning plans to unlock the full potential of each child.
-                                 </li>
-                                 <li>
-                                 Collaborating with educators, specialists, and parents to create a holistic learning experience that goes beyond academic achievements.
-                                 </li>
-                            </ul>
-
-                           </li>
-                           <li className='ml-5 font-poppins font-medium text-TextColor_Neutral text-xl'> Accessible Healthcare and Therapeutic Support:
-                            <ul className='list-disc ml-5 text-TextColor_T200 text-base'>
-                                 <li>
-                                 We envision a community where educational institutions are equipped to cater to the diverse needs of special children.
-                                 </li>
-                                 <li>
-                                 Implementing inclusive teaching methodologies and personalized learning plans to unlock the full potential of each child.
-                                 </li>
-                                 <li>
-                                 Collaborating with educators, specialists, and parents to create a holistic learning experience that goes beyond academic achievements.
-                                 </li>
-                            </ul>
-
-                           </li>
-                      </ul>
+                    
                       </div>
     </div>
-    {/* How we help */}
-    {/* <div className='flex flex-col w-[95%] mx-auto justify-center items-center  gap-10  '>
-                      <h3 className='text-Secondary1_Neutral text-[36px] font-poppins font-medium text-center'>
-                        <HeadingTags title={"How we help"}/>
-                      </h3>
-                      <div
-                      className='w-full mx-5 flex flex-col  justify-center gap-[120px] items-center  font-poppins '
-                      >
-                        <div className='relative mb-10 w-full max-w-[450px] h-[300px] bg-pink-500 translate-x-[-10%]'>
-                        <div className='flex w-full absolute shadow-2xl left-[65%] top-[50%] group z-10 flex-col gap-5 justify-center max-w-[450px] hover:bg-Primary_p50 px-5 py-10 rounded-lg bg-Secondary2_s50 items-center' >
-                           <h3 className='font-calligraffitti capitalize font-semibold text-pink-500 text-left group-hover:text-Secondary1_Neutral self-start  text-2xl'> Join Community</h3>
-                           <h5 className='text-lg font-poppins font-medium text-TextColor_Neutral text-left'>
-                              Find the answers to your <samp className='text-Secondary1_Neutral capitalize font-semibold'>question</samp>  , help other by <samp className='text-Secondary1_Neutral capitalize font-semibold'> Answering</samp> them 
-                           </h5>
-                           <Link to={'/login'} className='px-3  self-end py-2 text-center text-lg font-medium text-white hover:text-Secondary1_Neutral hover:bg-white bg-Secondary1_Neutral rounded-lg'> 
-                                    Join Community 
-                           </Link>
-                   </div>
-                        </div>
-                        <div className='relative mb-[80px] w-full max-w-[450px] h-[300px] bg-pink-500 translate-x-[-10%]'>
-                        <div className='flex w-full absolute shadow-2xl left-[65%] top-[50%] group z-10 flex-col gap-5 justify-center max-w-[450px] hover:bg-Primary_p50 px-5 py-10 rounded-lg bg-Secondary2_s50 items-center' >
-                           <h3 className='font-calligraffitti capitalize font-semibold text-pink-500 text-left group-hover:text-Secondary1_Neutral self-start  text-2xl'>
-                             Join  As Expert</h3>
-                           <h5 className='text-lg font-poppins font-medium text-TextColor_Neutral text-center'>
-                              Be a part of oure  <samp className='text-Secondary1_Neutral capitalize font-semibold'>Exert Community</samp>  , help other as <samp className='text-Secondary1_Neutral capitalize font-semibold'>trusted persons</samp> and so on
-                           </h5>
-                           <Link to={'/login'} className='px-3  self-end py-2 text-center text-lg font-medium text-white hover:text-Secondary1_Neutral hover:bg-white bg-Secondary1_Neutral rounded-lg'> 
-                           Be  a Part of Experts 
-                           </Link>
-                   </div>
-                        </div>
-               
-                      </div>
-    </div> */}
-    <div className='flex flex-col w-[95%] mx-auto justify-center items-center  gap-10  '>
+   
+    <div className='flex flex-col w-full  bg-Original bg-opacity-20 py-10 mx-auto justify-center items-center  gap-10  '>
     <h3 className='text-Secondary1_Neutral text-lg md:text-[36px] font-poppins font-medium text-center'>
                        <HeadingTags title={"Who We Are"}/>
                         
                       </h3>
-                      <p className='text-xl font-poppins font-normal  text-center'>
+                      <p className='text-xl font-poppins font-normal mx-5  text-center'>
                       At ImperfectConnect, we are a dedicated community passionate about supporting parents of special children. We believe in the strength that comes from embracing differences and the power of shared experiences. Our platform is a safe haven where understanding thrives, resilience is celebrated, and every parent finds the support they need. Together, we navigate the unique journey of raising extraordinary children, fostering a sense of belonging and empowerment. Welcome to ImperfectConnect – where your story is at the heart of our community.
                       </p>
     </div>
@@ -220,8 +160,9 @@ const Home = () => {
                    
     </div>
     <Develoer/>
+    {/* <Footer/> */}
     </div>
-     
+    
 </>
   )
 }

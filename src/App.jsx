@@ -16,6 +16,8 @@ import { QuestionDetails } from './screens/QuestionDetails'
 import { SignUp } from './screens/SignUp'
 import QuestionsPage from './screens/Questions'
 import { ForgetPassword } from './screens/ForgetPssword'
+import { Blogs } from './screens/Blogs'
+import { AboutUs } from './screens/AboutUs'
 function App() {
   const refreshToken = async () =>{
         if(localStorage?.getItem('Token_refresh')){
@@ -42,7 +44,7 @@ function App() {
 
   
   return (
-   <div> 
+   <div className='min-h-[100%] flex flex-col justify-evenly '> 
     {/* <Header /> */}
     <ScrollTop />
    
@@ -55,9 +57,10 @@ function App() {
       
       <Route path='/question' element={<QuestionsPage/>}/>
       <Route path='/question/:id' element={<QuestionDetails/>}/>
-      
-      <Route path='/ask-question' element={<AskQuestion/>}/>
+        <Route path='/about' element={<AboutUs />} />
 
+      <Route path='/ask-question' element={<AskQuestion/>}/>
+      <Route path='/blogs' element={<Blogs/>}/>
         <Route path='/forget-password' element={<ForgetPassword />} />
        <Route path ='/users' element={<Users/>}/>
        <Route path='/user/:id' element={<User hidHeader={true}/>}/>
