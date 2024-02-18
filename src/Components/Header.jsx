@@ -6,7 +6,7 @@ import { UserProfilePopup } from './Popup/UserProfilePopup';
 import Logout from './Popup/Logout';
 import HeadingTags from './Ribbon/HeadingTags'
 import { IoHomeOutline } from "react-icons/io5";
-import Logo from '../assets/imLogo.jpeg'
+import imLogo from '../assets/imLogo.jpeg'
 const Header = () => {
     const navigate = useNavigate()
     const [UserPoupOpen,setUserPoupOpen]= useState(false)
@@ -18,7 +18,7 @@ const Header = () => {
    
     <div className='flex sticky top-0 w-full text-white mx-auto px-5 shadow-sm bg-Original   z-50 items-center gap-10  max-md:overflow-x-auto justify-between  '>
           <Link to={'/'} >
-            <img src={Logo} alt='logo' className='w-full h-[50px] min-w-[320px]' />    </Link>
+            <img src={imLogo} alt='logo' className='w-full h-[50px] min-w-[320px]' />    </Link>
 <div className='w-3/5 mx-auto flex justify-between gap-10'>
       {/* <Link to='/' className='text-lg font-poppins font-medium text-TextColor_Neutral' ><IoHomeOutline size={25} /></Link> */}
       <Link to='/' className='text-lg font-poppins font-medium ' >About</Link>
