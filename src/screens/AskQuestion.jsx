@@ -91,7 +91,7 @@ const AskQuestion = () => {
     <Header/>
     <div className='w-[90%]  mx-auto justify-start items-start flex flex-col my-10 gap-10'>
         <h3 className='text-3xl font-calligraffitti font-bold text-TextColor_Neutral'>Ask A public Question</h3>
-      <div className='bg-pink-100 w-full rounded-xl flex flex-col px-5 py-5 gap-5'>
+      <div className='bg-Original bg-opacity-10 w-full rounded-xl flex flex-col px-5 py-5 gap-5'>
         <h3 className='font-semibold font-poppins text-2xl text-TextColor_Neutral'>Writing a good question</h3>
         <h4 className='text-base font-poppins font-medium'>You’re ready to ask a programming-related question and this form will help guide you through the process.
 Looking to ask a non-programming question? See the topics here to find a relevant site.</h4>
@@ -103,7 +103,7 @@ Looking to ask a non-programming question? See the topics here to find a relevan
        </ul>
       </div>
       <div className='bg-white border-2 rounded-xl flex flex-col gap-2 w-full p-5 '>
-       <h3 className='text-lg font-medium font-poppins tracking-tighter '>title</h3>
+       <h3 className='text-lg font-medium font-poppins tracking-tighter '>Title</h3>
        <h4 className='text-sm font-poppins font-normal tracking-tighter text-TextColor_T200'>Be specific and imagine you’re asking a question to another person.</h4>
        <input 
        value={title}
