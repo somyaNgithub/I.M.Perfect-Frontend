@@ -7,7 +7,7 @@ const AboutUs = () => {
     <>
     <Header/> 
     <div className='flex flex-col gap-5 my-5 justify-center items-center w-[96%] mx-auto'>
-    <div   className='w-full h-[400px] flex-col justify-center items-start flex px-5 gap-10  bg-Primary_p50 bg-center bg-cover'
+    <div   className='w-full h-[300px] flex-col justify-center items-start flex px-5  bg-center object-contain bg-contain'
               style={{
                 backgroundImage: `url(${imageSrc})`,
                 backgroundRepeat: "no-repeat"
