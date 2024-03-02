@@ -49,7 +49,7 @@ const QuestionDetails = () => {
       }
     })
       .then((res) => {
-        console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
+        // console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
         const questionArray = res?.data 
         // setSelectedQuestion(questionArray?.find((question)=>question?.Q_id === id))
         if (res?.data?.api_status) {

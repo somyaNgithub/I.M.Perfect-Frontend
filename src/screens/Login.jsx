@@ -60,7 +60,7 @@ const Login = () => {
         // "token": token
       }
     }).then((res) => {
-      console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
+      // console.log(res, '---------------------------------------------------------------@@@@@@@@@@@@@@2222222222222222222222@')
       // const questionArray = res?.data 
       // setQuestions(questionArray)
 
@@ -100,15 +100,15 @@ const Login = () => {
 
     })
     .catch((err) => { console.log("error contact us", err)
-     toast.error('Something went wrong try again later', {
-            position: "top-right",
+     toast.error('Username or password did not Match', {
+            position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: "colored",
             }); 
   })
   }

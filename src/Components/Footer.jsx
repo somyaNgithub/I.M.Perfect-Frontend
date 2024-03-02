@@ -14,7 +14,7 @@ const Footer = () => {
           <img src={Logo} alt='logo' className='w-full h-[50px] max-w-[320px]' />  
             </Link>
             <h3 className='font-poppins font-medium text-xl text-white tracking-tight '>
-                Khasra No. 13y-13x, Kapashera Old Delhi, road, near xyz Bank, <br/> Kapas Hera Extension, Gurugram, New Delhi, Delhi 110037
+                 Delhi, road no 1, near xyz Bank, <br/>  New Delhi, Delhi 110031
             </h3>
         </div>
         {/* footer linkes */}

@@ -5,16 +5,31 @@ import { IoEye, IoEyeOff } from 'react-icons/io5'
 // import { data } from 'autoprefixer'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import OtpInput from '../Components/OtpInput'
 import Header from '../Components/Header';
-const ForgetPassword = () => {
+const RestPassword = () => {
     const navigate = useNavigate()
-    const [email, setEmail] = useState(null)
+    const {token} = useParams()
+    const [Password, setPassword] = useState(null)
+    const [ConfirmPassword,setConfirmPassword] = useState(null)
     const [processing, setProcessing]= useState(false)
     async function userLogin() {
-        if (!email) {
-            toast.error("Please Enter Your email ", {
+        if (!Password ) {
+            toast.error("Please Enter New Your Password ", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
+            return
+        } 
+        if (Password !== ConfirmPassword ) {
+            toast.error("New Your Password and Confirm Password not matching ", {
                 position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -28,34 +43,34 @@ const ForgetPassword = () => {
         } 
         
         const data = {
-            "username": email,
+            "new_password": Password,
         }
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        const PasswordPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-        if (!emailPattern.test(email)) {
-            console.log("Invalid email format");
-            toast.error('Invalid Email ', {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-            });
-            // Handle validation error for email (e.g., display an error message)
-            return;
-        }
+        // if (!PasswordPattern.test(Password)) {
+        //     console.log("Invalid Password format");
+        //     toast.error('Invalid Password ', {
+        //         position: "top-center",
+        //         autoClose: 5000,
+        //         hideProgressBar: false,
+        //         closeOnClick: true,
+        //         pauseOnHover: true,
+        //         draggable: true,
+        //         progress: undefined,
+        //         theme: "colored",
+        //     });
+        //     // Handle validation error for Password (e.g., display an error message)
+        //     return;
+        // }
         setProcessing(true)
-        await axios.post('http://3.108.227.195:8000/password_reset_token_gen/', data, {
+        await axios.put(`http://3.108.227.195:8000/password-reset/${token}/`, data, {
             headers: {
                 "Content-Type": "application/json",
                 // "token": token
             }
         }).then((res) => {
             if (res?.data?.detail){
-            toast.success(`Password reset link sent successfully on Your Email Id `, {
+            toast.success(`Password Updated  `, {
                 position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -73,7 +88,7 @@ const ForgetPassword = () => {
         })
             .catch((err) => {
                 console.log("error contact us", err)
-                toast.error('No user found with this Email Id', {
+                toast.error('Some thing wrong happends ', {
                     position: "top-center",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -88,25 +103,35 @@ const ForgetPassword = () => {
     }
     return (<> 
     <Header hid={true}/>
-        <div className='w-full justify-center items-center flex h-[70vh]  bg-gray-300'>
-            <div className='max-w-[550px] w-full  mx-auto flex px-5 py-5 flex-col gap-5 justify-center items-start bg-white rounded-lg shadow-md  '>
-                <h3 className='text-Original text-2xl font-poppins font-semibold  '>Forget Password</h3>
+        <div className='w-full justify-center items-center flex  h-[70vh] bg-gray-300'>
+            <div className='max-w-[550px] w-full  mx-auto flex  px-5 py-5 flex-col gap-5 justify-center items-start bg-white rounded-lg shadow-md  '>
+                <h3 className='text-Original text-2xl font-poppins font-semibold  '>Reset Password</h3>
                 <div className='w-full space-y-5'>
                     <div className='text-TextColor_Neutral border hover:border-Original text-base w-full flex flex-col px-2 gap-[5px]'>
-                        <label>UserName</label>
+                        <label>New Password</label>
                         <input
-                            type='email'
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
+                            type='password'
+                            value={Password}
+                            onChange={e => setPassword(e.target.value)}
                             className='focus:outline-none rounded-lg w-full '
-                            placeholder='Enter  your email'
+                            placeholder='Enter New Password'
                         />
                     </div>
-                    <h4 className='text-sm text-TextColor_T200 font-poppins'>
-                        we'll send a password rest link to your email if it matches an existing Imperfect account.
-                    </h4>
+                    <div className='text-TextColor_Neutral border hover:border-Original text-base w-full flex flex-col px-2 gap-[5px]'>
+                        <label>Confirm Password</label>
+                        <input
+                            type='password'
+                            value={ConfirmPassword}
+                            onChange={e => setConfirmPassword(e.target.value)}
+                            className='focus:outline-none rounded-lg w-full '
+                            placeholder='Enter Confirm Password'
+                        />
+                    </div>
+                    {/* <h4 className='text-sm text-TextColor_T200 font-poppins'>
+                        we'll send a password rest link to your Password if it matches an existing Imperfect account.
+                    </h4> */}
                     <button disabled={processing} onClick={userLogin} className='border-Original  text-Original hover:bg-Original hover:text-white border rounded-lg w-full px-5 font-medium font-poppins  text-lg '>
-                        {processing ? <FaSpinner size={25} className='text-Original animate-spin' /> :"Get  Link"} 
+                        {processing ? <FaSpinner size={25} className='text-Original animate-spin' /> :"Reset Password"} 
                     </button>
                     <button onClick={()=>navigate(-1)} className='  rounded-lg w-full px-5 font-medium font-poppins text-TextColor_T200 text-lg '>
                         back
@@ -134,4 +159,4 @@ const ForgetPassword = () => {
     )
 }
 
-export {ForgetPassword}
+export {RestPassword}

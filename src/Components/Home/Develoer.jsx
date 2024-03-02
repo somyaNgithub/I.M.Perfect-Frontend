@@ -12,14 +12,14 @@ const Develoer = () => {
             <Dev
             name={'Somya Namdeo'}
             img={DevIMG} 
-            role={'Backend engineer + DBA '} 
+            role={'Backend Engineer + DBA  '} 
             linkdin={'https://www.linkedin.com/in/somya-n-140797248/'}
             github={'https://github.com/somyaNgithub'}
             />
               <Dev
             name={'Mohit Dubey'}
             img={DevIMG} 
-            role={'Frontend engineer  '} 
+            role={'Frontend Engineer  '} 
             linkdin={'https://www.linkedin.com/in/mohit132/'}
             github={'https://github.com/mohitdubey132'}
             />
@@ -33,7 +33,7 @@ export { Develoer}
 
 const Dev = ({ name , img , role , linkdin , github  }) =>{
          return (
-            <div className='w-[360px] flex flex-col min-h-[240px] max-md:mt-[100px] relative rounded-lg shadow-lg bg-opacity-70 bg-Original hover:bg-opacity-100  items-center'>
+            <div className=' min-w-[320px] w-full max-w-[360px] flex flex-col min-h-[240px] max-md:mt-[100px] relative rounded-lg shadow-lg bg-opacity-70 bg-Original hover:bg-opacity-100  items-center'>
                 <div className='w-[200px] h-[200px] absolute top-[-100px] rounded-full flex mx-auto items-center justify-center'>
                     <img src={img} alt='name' className='object-cover rounded-full w-full h-full'/>
                 </div>

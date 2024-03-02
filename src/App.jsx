@@ -18,6 +18,7 @@ import QuestionsPage from './screens/Questions'
 import { ForgetPassword } from './screens/ForgetPssword'
 import { Blogs } from './screens/Blogs'
 import { AboutUs } from './screens/AboutUs'
+import { RestPassword } from './screens/RestPassword'
 function App() {
   const refreshToken = async () =>{
         if(localStorage?.getItem('Token_refresh')){
@@ -61,6 +62,7 @@ function App() {
 
       <Route path='/ask-question' element={<AskQuestion/>}/>
       <Route path='/blogs' element={<Blogs/>}/>
+      <Route path='/password-reset/:token' element={<RestPassword />} />
         <Route path='/forget-password' element={<ForgetPassword />} />
        <Route path ='/users' element={<Users/>}/>
        <Route path='/user/:id' element={<User hidHeader={true}/>}/>
