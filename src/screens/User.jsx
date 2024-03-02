@@ -76,15 +76,9 @@ const User = ({hidHeader}) => {
              
                       {UserDatam?.about ? <EditorReadOnly 
                           id={UserDatam?.U_id}
-                          data={UserDatam?.about ?? '{"name":"12",}'}
+                          data={UserDatam?.about ?? null}
                           key={'24'}
-                      /> :`sys System Configuration Management Administrator (ClearCase, SVN, Git), defining various merge workflows between branches.
-
-                      app Development Architect, which involves:
-
-                      tools support around java technologies, including eclipse.
-                      code quality evaluation, including metrics definitions, and code static tools for different populations.
-code management (Jira, FishEye/Crucible, Maven, Hudson, Sonar)`}
+                      /> :``}
                     
 
                 </p>
