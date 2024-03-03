@@ -18,7 +18,7 @@ const User = ({hidHeader}) => {
        .then((res)=>{
         // console.log(res)
         if(res?.status===200){
-            SetUserData(res?.data)
+            SetUserData(pre=>res?.data)
         }
        }).catch((err)=>console.log(err))
        
@@ -39,7 +39,7 @@ const User = ({hidHeader}) => {
         {/* user hoto nd basic details */}
         <div className='w-full flex flex-col md:flex-row flex-wrap gap-5 items-start justify-center md:items-center md:justify-start'>
             <div className='w-[200px] h-[200px] flex items-center justify-center'>
-                <img src={UserDatam?.avatar??Hero1} alt={UserDatam?.userName} className='w-full h-[240px] object-cover rounded-xl'/>
+                <img src={UserDatam?.avatar} alt={UserDatam?.userName} className='w-full h-[240px] object-cover rounded-xl'/>
             </div>
             <div className='flex  flex-col gap-5'>
                      <h3 className='text-3xl text-TextColor_Neutral font-poppins font-medium'>
