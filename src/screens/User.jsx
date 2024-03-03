@@ -48,7 +48,7 @@ const User = ({hidHeader}) => {
                      <div>
                      <h3 className='text-base text-text_disable flex gap-2  items-center  font-medium'><BsCake/>   Member for 15 years, 4 months</h3>
                       <h3 className='text-base text-text_disable flex  gap-2 items-center  font-medium'><IoMailOutline />  <a href={`mailto:${UserDatam?.userName}`}>{UserDatam?.fullName}</a> <FaLocationDot/> {UserDatam?.country} </h3>
- 
+
          </div>
             </div>
         </div>

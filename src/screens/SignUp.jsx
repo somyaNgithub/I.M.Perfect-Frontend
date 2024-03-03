@@ -202,13 +202,11 @@ const SignUp = () => {
         theme: "colored",
       });
       setTimeout(() => { navigate('/') }, 5000)
-
-
     })
       .catch((err) => {
         console.log("error contact us", err)
-        toast.error('Email already exist', {
-          position: "top-right",
+        toast.error('Some Error Occurred ', {
+          position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -323,7 +321,7 @@ const SignUp = () => {
 
 
           <h3 className='text-lg font-poppins font-normal'>Bio</h3>
-          <Editor data='{"mdohit":"32"}' setJSONData={setAbout} id={"editorAbout"} />
+          <Editor data={null} setJSONData={setAbout} id={"editorAbout"} />
 
           <div className='flex gap-3'>
             {/* <div className='px-5 my-5 flex flex-col-reverse bg-white rounded-lg font-poppins py-3 items-center  border-border_Neutral justify-between  '>
