@@ -20,9 +20,9 @@ const Footer = () => {
         {/* footer linkes */}
         {/* <div className='flex flex-wrap justify-between items-center     mx-auto'> */}
         <ul className='text-white flex flex-col gap-5'>
-         <samp className='text-xl'>Servies</samp>
-          <Link>aask a question</Link>
-          <Link >users</Link>
+         <samp className='text-xl'>Services</samp>
+          <Link>Ask a question</Link>
+          <Link >Users</Link>
         </ul>
           <ul className='text-white flex flex-col gap-5'>
          <samp className='text-xl'> Events </samp>
