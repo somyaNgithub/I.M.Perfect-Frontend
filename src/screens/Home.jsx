@@ -62,7 +62,7 @@ const Home = () => {
       allowSlidePrev={true}
       // thumbs={true}
       navigation={{nextEl:".arrow-left", prevEl: ".arrow-right"}}
-        // autoplay={{ delay: 4000 }} 
+         autoplay={{ delay: 4000 }} 
       pagination={true} modules={[Pagination ,Autoplay , A11y ,Navigation ]} className="mySwiper max-h-[450px]">
       
         <SwiperSlide key={1}>
