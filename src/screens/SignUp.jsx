@@ -132,7 +132,7 @@ const SignUp = () => {
       // Handle validation error (e.g., display an error message)
       return;
     }
-    const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8}$/;
+    const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,20}$/;
 
     if (!passwordPattern.test(password)) {
       console.log("Invalid password format");
